@@ -2,7 +2,6 @@ const cacheName = 'nickficano-pwa-v2';
 const filesToCache = [
     '/',
     '/static/offline.html',
-    '/static/font/BebasNeueRegular.ttf',
     '/static/font/BebasNeueRegular.woff',
     '/static/font/BebasNeueRegular.woff2',
 ];
