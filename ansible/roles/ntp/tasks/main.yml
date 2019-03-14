@@ -1,0 +1,12 @@
+---
+# file: roles/ntp/tasks/main.yml
+
+- name: install
+  apt: pkg=ntp state=present
+
+- name: start service
+  service: name=ntp enabled=yes
+
+- name: write ntp configuration
+  template: src=templates/ntp.conf dest=/etc/ntp.conf
+  notify: restart ntp daemon

@@ -1,0 +1,19 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+*.pyc
+Icon
+/resources
+server/overrides.py
+src/static/build
+node_modules/*
+client/static/js/bundle*
+client/static/css/*
+instance/overrides.py
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes

@@ -1,0 +1,16 @@
+---
+  - name: import the Yarn gpg key into apt
+    apt_key:
+      url: https://dl.yarnpkg.com/debian/pubkey.gpg
+      state: present
+
+  - name: import yarn apt repo
+    apt_repository:
+      repo: "deb http://dl.yarnpkg.com/debian/ stable main"
+      filename: "yarn"
+      state: present
+
+  - name: install yarn
+    apt:
+      name: yarn
+      update_cache: yes

@@ -1,0 +1,10 @@
+---
+# file: roles/dhparam/defaults/main.yml
+
+dhparam_size: 4096
+dhparam_file: "/etc/ssl/dhparam-{{ dhparams_size }}.pem"
+
+# Use a cronjob to update DH params regularly
+dhparam_update_enabled: true
+# (daily, weekly, monthly, annually)
+dhparam_update_interval: weekly

@@ -1,0 +1,21 @@
+---
+# file: roles/users/tasks/main.yml
+
+- name: add groups
+  group:
+    name: "{{ app.group }}"
+    state: present
+
+- name: add users
+  user:
+    name: "{{ app.user }}"
+    group: "{{ app.group }}"
+    createhome: yes
+
+- name: add .ssh directory
+  file:
+    path: /home/{{ app.user }}/.ssh
+    owner: "{{ app.user }}"
+    group: "{{ app.group }}"
+    state: directory
+    mode: 0700

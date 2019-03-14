@@ -1,0 +1,9 @@
+---
+# file: roles/dhparam/tasks/cron.yml
+
+- name: write cron for auto-regenerating dhparams
+  cron:
+    name: "Diffie-Hellman parameter update"
+    job: "{{ dhparam_openssl_binary }} dhparam -dsaparam -out '{{ dhparam_file }}' {{ dhparam_size }}"
+    state: "{{ 'present' if dhparam_update_enabled else 'absent' }}"
+    special_time: "{{ dhparam_update_interval }}"

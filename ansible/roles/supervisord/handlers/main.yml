@@ -1,0 +1,5 @@
+---
+# file: roles/supervisord/handlers/main.yml
+
+- name: reload systemctl
+  command: systemctl daemon-reload

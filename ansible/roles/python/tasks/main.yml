@@ -1,0 +1,12 @@
+---
+  - name: Add deadsnakes ppa
+    apt_repository: repo='ppa:fkrull/deadsnakes'
+
+  - name: install python packages
+    apt: name={{ item }} update_cache=yes
+    with_items:
+      - build-essential
+      - libffi-dev
+      - libssl-dev
+      - python3.6-dev
+      - python-setuptools

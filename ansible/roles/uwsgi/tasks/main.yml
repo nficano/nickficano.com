@@ -1,0 +1,27 @@
+---
+  - name: install python packages
+    apt: name={{ item }} update_cache=yes
+    with_items:
+      - uwsgi
+      - uwsgi-src
+      - uuid-dev
+      - libcap-dev
+      - libpcre3-dev
+
+  - name: build python 3.6 plugin for uwsgi
+    command: uwsgi --build-plugin "/usr/src/uwsgi/plugins/python python36"
+    environment:
+      PYTHON: python3.6
+    args:
+      chdir: /tmp
+
+  - name: install python 3.6 plugin for uwsgi
+    command: mv /tmp/python36_plugin.so /usr/lib/uwsgi/plugins/python36_plugin.so
+    become: yes
+    args:
+      creates: /usr/lib/uwsgi/plugins/python36_plugin.so
+
+  - name: set permissions for python 3.6 uwsgi plugin
+    file:
+      path: /usr/lib/uwsgi/plugins/python36_plugin.so
+      mode: 0644

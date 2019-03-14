@@ -1,0 +1,5 @@
+---
+# file: roles/ntp/handlers/main.yml
+
+- name: restart ntp daemon
+  service: name=ntp state=restarted enabled=yes

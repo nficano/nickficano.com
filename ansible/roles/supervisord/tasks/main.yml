@@ -1,0 +1,46 @@
+---
+# file: roles/supervisord/tasks/main.yml
+
+- name: install python-setuptools
+  apt:
+    name: python-setuptools
+
+- name: install pip
+  easy_install:
+    name: pip
+
+- name: install
+  pip:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - supervisor
+
+- name: create supervisor configuration directory
+  file:
+    dest: /etc/supervisor
+    state: directory
+    owner: root
+
+- name: create supervisor process configuration directory
+  file:
+    dest: /etc/supervisor/conf.d
+    state: directory
+    owner: root
+
+- name: write supervisor main configuration
+  template:
+    src: templates/supervisord.conf
+    dest: /etc/supervisor/supervisord.conf
+
+- name: write startup daemon
+  template:
+    src: templates/supervisord.sh
+    dest: /etc/init.d/supervisord
+    mode: 0755
+
+- name: start service
+  service:
+    name: supervisord
+    state: started
+    enabled: yes
