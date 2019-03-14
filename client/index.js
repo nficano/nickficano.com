@@ -1,6 +1,8 @@
 import './scss/main.scss';
 
-document.addEventListener('touchstart', onTouchStart, {passive: true});
+if ('ontouchstart' in document.documentElement) {
+  document.addEventListener('touchstart', onTouchStart, {passive: true});
+}
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
