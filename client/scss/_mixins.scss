@@ -3,7 +3,7 @@
         font-family: $family;
         src: url('#{$src}.woff2') format('woff2'), // standards
              url('#{$src}.ttf') format('truetype'); // Safari, Android, iOS
-        font-display: auto;
+        font-display: swap;
         font-style: $style;
         font-weight: $weight;
     }
