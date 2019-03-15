@@ -116,7 +116,7 @@ a {
 
 @for $i from 1 through 11 {
   .content li:nth-child(#{$i}) {
-    animation-delay: $i * 1000ms
+    animation-delay: $i * 100ms
   }
 }
 
