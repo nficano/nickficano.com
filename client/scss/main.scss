@@ -61,10 +61,10 @@ body {
   opacity: 0.05;
   position: absolute;
   display: none;
-  @include css3-prefix(animation-delay, 1.3s);
+  @include css3-prefix(animation-delay, 1s);
   @include css3-prefix(transition-timing-function, cubic-bezier(0.22, 0.68, 0.99, 0.99));
   @include css3-prefix(animation-name, slide-in-right);
-  @include css3-prefix(animation-duration, 1.2s);
+  @include css3-prefix(animation-duration, 1s);
   @include css3-prefix(animation-fill-mode, both);
 }
 
