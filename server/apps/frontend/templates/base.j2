@@ -20,7 +20,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/static/images/icons/apple-touch-icon.png">
     <link rel="icon" href="/static/images/favicon.ico">
     <link rel="manifest" href="/static/manifest.json">
-    {% if not config.DEBUG %}
+    {% if config.DEBUG %}
     <link rel="stylesheet" type="text/css" href="{{- url_for('static', filename='css/' + static_assets['main.css']['filename']) -}}">
     {% else %}
     <style type="text/css">{{- static_assets['main.css']['raw'] -}}</style>

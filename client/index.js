@@ -1,5 +1,4 @@
 import './scss/main.scss';
-import 'default-passive-events';
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
