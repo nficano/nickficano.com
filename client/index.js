@@ -1,6 +1,6 @@
 import './scss/main.scss';
 
-const correctViewpointHeight = () => {
+const fixViewHeight = () => {
   if (window.location.search.indexOf('mode')) {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -8,8 +8,8 @@ const correctViewpointHeight = () => {
 };
 
 const init = () => {
-  window.addEventListener('resize', () => correctViewpointHeight());
-  correctViewpointHeight();
+  window.addEventListener('resize', () => fixViewHeight());
+  fixViewHeight();
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
