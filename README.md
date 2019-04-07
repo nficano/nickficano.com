@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://s3.amazonaws.com/assets.nickficano.com/octo.svg?38923" alt="Nick Ficano logo" width="300" height="225">
+  <img src="https://assets.nickficano.com/gh-nickficano.com-octopus.svg" alt="Nick Ficano logo" width="300" height="225">
   <div align="center">
     <img src="https://img.shields.io/badge/python-3.6-blue.svg" />
     <img src="https://img.shields.io/badge/lighthouse-100%25-brightgreen.svg" />
@@ -29,4 +29,4 @@ excluded file.
 
 ## Installing as a Progressive Web App (PWA) on iOS
 
-<img src="https://s3.amazonaws.com/assets.nickficano.com/nick-ficano-progressive-web-app-pwa.gif" width="296" alt="Installing as a Progressive Web App (PWA) on iOS" />
+<img src="https://assets.nickficano.com/gh-nickficano.com-progressive-web-app-pwa.gif" width="296" alt="Installing as a Progressive Web App (PWA) on iOS" />
