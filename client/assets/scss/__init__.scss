@@ -1,0 +1,22 @@
+@import './mixins';
+
+@include font-face('Bebas', '../fonts/Bebas', 'normal', 100);
+@include font-face('PT Sans', '../fonts/PT-Sans', 'normal', 100);
+
+$family-sans-serif: 'PT Sans', Avenir, sans-serif;
+$body-background-color: #202226;
+$title-color: #FFF;
+$title-size: 4rem;
+$subtitle-color: #88898D;
+$dark: #202226;
+$navbar-height: 15.25rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Bebas';
+}
+
+@import '~bulma';
