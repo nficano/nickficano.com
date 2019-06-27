@@ -1,22 +1,44 @@
 @import './mixins';
+@import '~bulma/sass/utilities/all';
+
 
 @include font-face('Bebas', '../fonts/Bebas', 'normal', 100);
 @include font-face('PT Sans', '../fonts/PT-Sans', 'normal', 100);
 
-$family-sans-serif: 'PT Sans', Avenir, sans-serif;
-$body-background-color: #202226;
-$title-color: #FFF;
-$title-size: 4rem;
-$subtitle-color: #88898D;
 $dark: #202226;
-$navbar-height: 15.25rem;
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+$body-family: 'PT Sans', Avenir, sans-serif;
+$body-background-color: #202226;
+$family-primary: $family-sans-serif;
+$family-sans-serif: 'PT Sans', Avenir, sans-serif;
+$navbar-background-color: $dark;
+$subtitle-color: #88898D;
+$subtitle-family: 'Bebas';
+$subtitle-negative-margin: -1.75rem;
+$text-strong: $white;
+$text: $white;
+$title-color: $white;
+$title-family: 'Bebas';
+$title-size: $size-1;
+:root {
+  @include mobile {
+    font-size: 16px;
+  }
+  @include tablet {
+    font-size: 18px;
+  }
+  @include widescreen {
+    font-size: 22px;
+  }
+  @include fullhd {
+    font-size: 26px;
+  }
+}
+
+.stack {
     font-family: 'Bebas';
+    li {
+        padding-top: .4rem;
+    }
 }
 
 @import '~bulma';

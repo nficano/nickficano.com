@@ -1,7 +1,12 @@
 module.exports = {
   mode: 'universal',
+  server: {
+    port: 3000,
+    host: '0.0.0.0'
+  },
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Top GitHub Python Engineer in NYC',
+    titleTemplate: '%s | Nick Ficano',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -13,7 +18,7 @@ module.exports = {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
-  loading: { color: '#fff' },
+  loading: { color: '#0e0d0a' },
   css: [
     {
       src: '~assets/scss/__init__.scss',
