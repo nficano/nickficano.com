@@ -16,6 +16,7 @@
     "@nuxtjs/bulma": "^1.2.1",
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/style-resources": "^0.1.2",
+    "bulma-helpers": "^0.3.8",
     "cross-env": "^5.2.0",
     "dayjs": "^1.8.14",
     "express": "^4.16.4",

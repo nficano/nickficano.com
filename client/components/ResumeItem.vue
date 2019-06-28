@@ -1,40 +1,15 @@
 <template>
-  <section class="hero is-fullheight">
-    <div class="hero-head">
-      <div class="container">
-        <div class="columns">
-          <div class="column is-hidden-mobile">
-            <h1 class="title is-4">{{ company }}</h1>
-            <h2 class="subtitle is-6">{{ location }}</h2>
-            <div class="is-size-7">
-              <h2 class="subtitle is-6 is-marginless">Stack</h2>
-              <ul class="stack">
-                <li v-for="item in stack.slice().sort()" :key="item">
-                  {{ item }}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="column is-two-thirds-desktop is-two-thirds-tablet">
-            <div class="columns">
-              <div class="column">
-                <h2 class="subtitle is-7">Title</h2>
-                <h1 class="title is-5">{{ title }}</h1>
-              </div>
-              <div class="column">
-                <h2 class="subtitle is-7">When</h2>
-                <h1 class="title is-5">
-                  {{ startDate }} &ndash;
-                  <span v-if="!isCurrentlyWorkingHere">{{ endDate }}</span>
-                  <span v-else>PRESENT</span>
-                </h1>
-              </div>
-            </div>
-            <div class="content is-size-7">
-              <slot name="description"></slot>
-            </div>
-          </div>
-        </div>
+  <section class="section">
+    <div class="container is-widescreen is-fullhd has-margin-top-20">
+      <div class="columns is-multiline is-mobile has-margin-bottom-20">
+        <job-prop :title="company" subtitle="New York, NY" />
+        <job-prop :title="title" subtitle="title" />
+        <job-prop :title="when" subtitle="when" />
+      </div>
+    </div>
+    <div class="container is-widescreen is-fullhd">
+      <div class="content is-size-5-mobile">
+        <slot name="description"></slot>
       </div>
     </div>
   </section>
@@ -42,9 +17,12 @@
 
 <script>
 import dayjs from 'dayjs'
-
+import JobProp from '~/components/JobProp.vue'
 export default {
   name: 'ResumeItem',
+  components: {
+    JobProp
+  },
   props: {
     title: {
       required: true,
@@ -78,10 +56,15 @@ export default {
   },
   computed: {
     startDate: function() {
-      return dayjs(this.fromDate).format('MMM YYYY')
+      return dayjs(this.fromDate).format('MMM YY')
     },
     endDate: function() {
-      return dayjs(this.toDate).format('MMM YYYY')
+      return dayjs(this.toDate).format('MMM YY')
+    },
+    when: function() {
+      return `${this.startDate} – ${
+        this.isCurrentlyWorkingHere ? 'PRESENT' : this.endDate
+      }`
     }
   }
 }

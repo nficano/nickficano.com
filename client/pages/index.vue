@@ -27,7 +27,7 @@
     <resume-item
       title="Lead Engineer"
       company="Simple Health"
-      location="Greater New York City Area"
+      location="New York, NY"
       :from-date="new Date(2016, 0, 15)"
       :is-currently-working-here="true"
       :stack="[
@@ -105,8 +105,8 @@
     </resume-item>
     <resume-item
       title="Senior Engineer"
-      company="Keep"
-      location="Greater New York City Area"
+      company="Keep.com"
+      location="New York, NY"
       :from-date="new Date(2012, 4, 1)"
       :to-date="new Date(2016, 0, 1)"
       :is-currently-working-here="false"
