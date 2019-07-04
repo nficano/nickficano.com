@@ -1,7 +1,7 @@
 module.exports = {
   mode: 'universal',
   server: {
-    port: 3000,
+    port: 8080,
     host: '0.0.0.0'
   },
   head: {
@@ -25,7 +25,7 @@ module.exports = {
       lang: 'scss'
     }
   ],
-  plugins: [],
+  plugins: ['@/plugins/ios-100vh.client.js'],
   modules: ['@nuxtjs/pwa', '@nuxtjs/eslint-module'],
   build: {
     postcss: {

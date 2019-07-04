@@ -1,10 +1,14 @@
 <template>
   <section class="section">
-    <div class="container is-widescreen is-fullhd has-margin-top-20">
-      <div class="columns is-multiline is-mobile has-margin-bottom-20">
-        <job-prop :title="company" subtitle="New York, NY" />
-        <job-prop :title="title" subtitle="title" />
-        <job-prop :title="when" subtitle="when" />
+    <div class="container is-widescreen is-fullhd">
+      <div class="columns is-multiline is-mobile has-margin-bottom-10">
+        <job-prop
+          :title="company"
+          subtitle="New York, NY"
+          :is-full-mobile="true"
+        />
+        <job-prop :title="title" subtitle="title" :is-full-mobile="true" />
+        <job-prop :title="when" subtitle="when" :is-full-mobile="true" />
       </div>
     </div>
     <div class="container is-widescreen is-fullhd">
@@ -56,10 +60,10 @@ export default {
   },
   computed: {
     startDate: function() {
-      return dayjs(this.fromDate).format('MMM YY')
+      return dayjs(this.fromDate).format('MMM YYYY')
     },
     endDate: function() {
-      return dayjs(this.toDate).format('MMM YY')
+      return dayjs(this.toDate).format('MMM YYYY')
     },
     when: function() {
       return `${this.startDate} – ${

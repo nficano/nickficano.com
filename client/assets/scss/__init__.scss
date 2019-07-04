@@ -17,6 +17,8 @@ $subtitle-negative-margin: -1.75rem;
 $text-strong: $white;
 $text: $white;
 $title-color: $white;
+$link: $white;
+$link-hover: #00d1b2;
 $title-family: 'Bebas';
 $title-size: $size-1;
 :root {
@@ -39,6 +41,16 @@ $title-size: $size-1;
     li {
         padding-top: .4rem;
     }
+}
+
+a {
+  transition: color 0.3s ease-in-out;
+  -webkit-transition: color 0.3s ease-in-out;
+  -moz-transition: color 0.3s ease-in-out;
+  border-bottom: 3px solid #00d1b2;
+  &:hover {
+    border-bottom: 3px solid #00d1b2;
+  }
 }
 
 @import '~bulma';
