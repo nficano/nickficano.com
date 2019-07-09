@@ -36,21 +36,9 @@ $title-size: $size-1;
   }
 }
 
-.stack {
-    font-family: 'Bebas';
-    li {
-        padding-top: .4rem;
-    }
-}
-
-a {
-  transition: color 0.3s ease-in-out;
-  -webkit-transition: color 0.3s ease-in-out;
-  -moz-transition: color 0.3s ease-in-out;
-  border-bottom: 3px solid #00d1b2;
-  &:hover {
-    border-bottom: 3px solid #00d1b2;
-  }
+#fp-nav ul li a span {
+  background: #88898D;
+  opacity: .3;
 }
 
 @import '~bulma';

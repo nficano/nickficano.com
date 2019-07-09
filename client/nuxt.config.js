@@ -25,7 +25,10 @@ module.exports = {
       lang: 'scss'
     }
   ],
-  plugins: ['@/plugins/ios-100vh.client.js'],
+  plugins: [
+    { src: '@/plugins/ios-100vh.client.js' },
+    { src: '@/plugins/vue-fullpage.client.js', ssr: false }
+  ],
   modules: ['@nuxtjs/pwa', '@nuxtjs/eslint-module'],
   build: {
     postcss: {

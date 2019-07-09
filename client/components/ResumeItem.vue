@@ -2,13 +2,13 @@
   <section class="section">
     <div class="container is-widescreen is-fullhd">
       <div class="columns is-multiline is-mobile has-margin-bottom-10">
-        <job-prop
+        <page-heading
           :title="company"
           subtitle="New York, NY"
           :is-full-mobile="true"
         />
-        <job-prop :title="title" subtitle="title" :is-full-mobile="true" />
-        <job-prop :title="when" subtitle="when" :is-full-mobile="true" />
+        <page-heading :title="title" subtitle="title" :is-full-mobile="true" />
+        <page-heading :title="when" subtitle="when" :is-full-mobile="true" />
       </div>
     </div>
     <div class="container is-widescreen is-fullhd">
@@ -21,11 +21,11 @@
 
 <script>
 import dayjs from 'dayjs'
-import JobProp from '~/components/JobProp.vue'
+import PageHeading from '~/components/PageHeading.vue'
 export default {
   name: 'ResumeItem',
   components: {
-    JobProp
+    PageHeading
   },
   props: {
     title: {

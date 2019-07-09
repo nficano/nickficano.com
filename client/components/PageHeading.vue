@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'JobProp',
+  name: 'Heading',
   props: {
     title: {
       required: true,
