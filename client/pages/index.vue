@@ -1,27 +1,46 @@
 <template>
   <div>
     <full-page id="fullpage" ref="fullpage" :options="options">
-      <page-section :class="['hero', 'is-fullheight', 'is-viewheight-fix']">
-        <div class="hero-body">
-          <div class="container has-text-centered has-text-left-mobile">
-            <h1 class="title">Software Engineer</h1>
-            <h2 class="subtitle">New York City, NY</h2>
+      <page-section :class="['fp-section']">
+        <div class="hero is-fullheight">
+          <div class="hero-body">
+            <div class="container has-text-centered has-text-left-mobile">
+              <h1 class="title">Software Engineer</h1>
+              <h2 class="subtitle">New York City, NY</h2>
+            </div>
           </div>
         </div>
       </page-section>
-      <page-section :class="['fp-section']">
-        <div class="hero-body">
+      <page-section :class="['fp-section', 'about']">
+        <div class="section">
           <div class="container">
-            <h1 class="title">About</h1>
-            <h2 class="subtitle">Who I am</h2>
+            <h1 class="title">
+              About
+            </h1>
+            <h2 class="subtitle">
+              Who am I
+            </h2>
           </div>
         </div>
-      </page-section>
-      <page-section :class="['fp-section']">
-        <div class="hero-body">
+        <div class="section about-body">
           <div class="container">
-            <h1 class="title">Resume</h1>
-            <h2 class="subtitle">What I do</h2>
+            <p>
+              A kind and candid engineer with experience building, developing,
+              and leading motivated teams of developers while consistently
+              developing creative solutions for identified business problems.
+            </p>
+            <br />
+            <p>
+              Passionate about creating efficiencies and instilling a culture of
+              humor and collaboration.
+              <strong>Trusted as first engineer/employee</strong> hire at two
+              companies.
+            </p>
+          </div>
+          <div class="container">
+            <div class="control has-text-centered">
+              <a href="#" class="button">Resume</a>
+            </div>
           </div>
         </div>
       </page-section>
@@ -29,7 +48,7 @@
         <div class="hero-body">
           <div class="container">
             <h1 class="title">Projects</h1>
-            <h2 class="subtitle">What I built</h2>
+            <h2 class="subtitle">Things I made</h2>
           </div>
         </div>
       </page-section>
@@ -37,7 +56,7 @@
         <div class="hero-body">
           <div class="container">
             <h1 class="title">Blog</h1>
-            <h2 class="subtitle">What I think</h2>
+            <h2 class="subtitle">Today I Learned</h2>
           </div>
         </div>
       </page-section>
@@ -63,7 +82,7 @@ export default {
     return {
       options: {
         menu: '#menu',
-        anchors: ['hero', 'forward', 'resume', 'blog'],
+        anchors: ['hero', 'about', 'projects', 'blog', 'contact'],
         sectionSelector: '.fp-section',
         verticalCentered: false,
         css3: true,
@@ -96,5 +115,18 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.button {
+  background: transparent;
+  color: #ffffff;
+  border-radius: 0;
+  border: 0.1rem solid #fff;
+  padding: 1.2rem 3rem;
+  margin-top: 2rem;
+}
+
+.about-body {
+  margin-top: -2rem;
 }
 </style>

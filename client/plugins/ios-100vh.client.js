@@ -1,14 +1,3 @@
-const offsetViewHeight = () => {
-  const applyOffset = () => {
-    const vh = window.innerHeight * 0.01
-    document.documentElement.style.setProperty('--vh', `${vh}px`)
-  }
-  const addEventListeners = () => {
-    window.addEventListener('resize', () => applyOffset())
-    window.addEventListener('orientationchange', () => applyOffset())
-  }
+const viewportUnitsBuggyfill = require('viewport-units-buggyfill')
 
-  applyOffset()
-  addEventListeners()
-}
-offsetViewHeight()
+viewportUnitsBuggyfill.init()
