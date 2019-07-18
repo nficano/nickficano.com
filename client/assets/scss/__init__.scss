@@ -2,12 +2,14 @@
 @import '~bulma/sass/utilities/all';
 @import '~bulma-helpers/sass/helpers/all';
 
-@include font-face('Bebas', '../fonts/Bebas', 'normal', 100);
+@include font-face('Bebas', '../fonts/Bebas', 'normal', 500);
 @include font-face('PT Sans', '../fonts/PT-Sans', 'normal', 100);
 
-$dark: #202226;
+
+
+$dark: #292C32;
 $body-family: 'PT Sans', Avenir, sans-serif;
-$body-background-color: #202226;
+$body-background-color: #292C32;
 $family-primary: $family-sans-serif;
 $family-sans-serif: 'PT Sans', Avenir, sans-serif;
 $navbar-background-color: $dark;
@@ -21,6 +23,7 @@ $link: $white;
 $link-hover: #00d1b2;
 $title-family: 'Bebas';
 $title-size: $size-1;
+$title-weight: 200;
 :root {
   @include mobile {
     font-size: 16px;
@@ -33,6 +36,18 @@ $title-size: $size-1;
   }
   @include fullhd {
     font-size: 26px;
+  }
+}
+
+.peek {
+  @include mobile {
+    bottom: -6rem;
+  }
+  @include tablet {
+    bottom: -6rem;
+  }
+  @include from($tablet) {
+    bottom: -3rem;
   }
 }
 

@@ -1,20 +1,15 @@
 <template>
-  <div
-    class="column is-one-third-desktop"
-    :class="{ 'is-full-mobile': isFullMobile, 'is-half-mobile': !isFullMobile }"
-  >
-    <h4 class="title is-4">
-      {{ title }}
-    </h4>
-    <h5 class="subtitle is-5">
-      {{ subtitle }}
-    </h5>
+  <div class="section">
+    <div class="container" v-bind="$attrs">
+      <h1 class="title">{{ title }}</h1>
+      <h2 class="subtitle">{{ subtitle }}</h2>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Heading',
+  name: 'FeaturedBlogPost',
   props: {
     title: {
       required: true,
@@ -23,11 +18,6 @@ export default {
     subtitle: {
       required: true,
       type: String
-    },
-    isFullMobile: {
-      required: false,
-      default: false,
-      type: Boolean
     }
   }
 }
