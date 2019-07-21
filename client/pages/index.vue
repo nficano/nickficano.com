@@ -5,13 +5,21 @@
         <div class="hero is-fullheight">
           <div class="hero-body">
             <div class="container has-text-centered">
-              <h1 class="title">Software Engineer</h1>
-              <h2 class="subtitle">New York City, NY</h2>
+              <h1 class="title">Nick Ficano</h1>
+              <h2 class="subtitle">New York, NY &ndash; Software Engineer</h2>
               <div class="social">
-                <icon name="twitter" />
-                <icon name="instagram" />
-                <icon name="linkedin" />
-                <icon name="github" />
+                <a href="https://twitter.com/nficano" target="_blank">
+                  <icon name="twitter" />
+                </a>
+                <a href="https://www.instagram.com/nficano/" target="_blank">
+                  <icon name="instagram" />
+                </a>
+                <a href="https://www.linkedin.com/in/nficano/" target="_blank">
+                  <icon name="linkedin" />
+                </a>
+                <a href="https://github.com/nficano" target="_blank">
+                  <icon name="github" />
+                </a>
               </div>
             </div>
           </div>
@@ -20,12 +28,12 @@
       </page-section>
       <page-section>
         <page-heading title="About" subtitle="Who am I" />
-        <div class="section section-about ">
-          <div class="container is-size-4 is-size-6-mobile">
-            <div class="columns">
+        <div class="section section-about">
+          <div class="container is-size-5 is-size-6-mobile">
+            <div class="columns columns-about">
               <div class="column is-8 is-offset-2">
                 <p>
-                  A kind and candid engineer with experience building,
+                  A kind and candid software engineer with experience building,
                   developing, and leading motivated teams of developers while
                   consistently developing creative solutions for identified
                   business problems.
@@ -37,7 +45,11 @@
                   engineer/employee hire at two companies.
                 </p>
                 <div class="control has-text-centered">
-                  <a href="#" class="button">Resume</a>
+                  <a
+                    href="https://dl.nickficano.com/Nick%20Ficano%20Resume.pdf"
+                    class="button is-shadowless"
+                    >Resume</a
+                  >
                 </div>
               </div>
             </div>
@@ -47,6 +59,28 @@
       </page-section>
       <page-section>
         <page-heading title="Projects" subtitle="Things I made" />
+        <div class="section section-projects">
+          <project icon="pytube">
+            <a href="https://github.com/nficano/pytube">
+              pytube - A lightweight, dependency-free Python library (and
+              command-line utility) for downloading YouTube Videos.
+            </a>
+          </project>
+
+          <project icon="python-lambda">
+            <a href="https://github.com/nficano/python-lambda">
+              python-lambda - A toolkit for developing and deploying serverless
+              Python code in AWS Lambda.
+            </a>
+          </project>
+
+          <project icon="tangerine">
+            <a href="https://github.com/nficano/tangerine">
+              tangerine - A Flask inspired, decorator based API wrapper for
+              writing Slack bots.
+            </a>
+          </project>
+        </div>
         <peek name="posts" />
       </page-section>
       <page-section>
@@ -58,7 +92,7 @@
             brief="How-to coerce all programming related files to open in your preferred text editor by default."
           />
           <div class="control has-text-centered">
-            <a href="#" class="button">View All</a>
+            <a href="#" class="button">View All Posts</a>
           </div>
         </div>
         <peek name="contact" />
@@ -66,7 +100,30 @@
       <page-section>
         <page-heading title="Contact" subtitle="Get in touch" />
         <div class="section section-contact">
-          <div class="container"></div>
+          <div class="container">
+            <div class="columns">
+              <div class="column is-6 is-offset-3">
+                <text-input
+                  name="name"
+                  label="Name"
+                  placeholder="Steven Lewis"
+                />
+                <text-input
+                  name="email"
+                  label="Email"
+                  placeholder="customercare@gogoair.com"
+                />
+                <text-input
+                  name="message"
+                  label="Message"
+                  placeholder="What do you think Clifford's actual height was?"
+                />
+                <div class="control has-text-centered">
+                  <a href="#" class="button">Send</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </page-section>
     </full-page>
@@ -75,7 +132,9 @@
 
 <script>
 import Icon from '~/components/Icon.vue'
+import TextInput from '~/components/TextInput.vue'
 import Peek from '~/components/Peek.vue'
+import Project from '~/components/Project.vue'
 import PageSection from '~/components/PageSection.vue'
 import PageHeading from '~/components/PageHeading.vue'
 import FeaturedBlogPost from '~/components/FeaturedBlogPost.vue'
@@ -85,7 +144,9 @@ export default {
     FeaturedBlogPost,
     PageSection,
     PageHeading,
-    Peek
+    Peek,
+    TextInput,
+    Project
   },
   data() {
     return {
@@ -115,6 +176,12 @@ export default {
           const originPeek = document.querySelector(`.peek-${origin.anchor}`)
           if (originPeek) {
             originPeek.classList.remove('is-unfocused')
+          }
+        },
+        afterLoad: function(origin, destination, direction) {
+          const dest = document.querySelector(`.columns-${destination.anchor}`)
+          if (dest) {
+            dest.classList.remove('is-action-potential')
           }
         }
       }
@@ -154,7 +221,21 @@ export default {
 }
 
 .social {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
+}
+
+.project {
+  padding-bottom: 1.5rem;
+}
+a {
+  svg {
+    transition: all 0.2s ease-in-out;
+  }
+  &:hover {
+    svg {
+      transform: scale(1.3);
+    }
+  }
 }
 </style>

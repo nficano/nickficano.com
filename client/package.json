@@ -16,6 +16,7 @@
     "@nuxtjs/bulma": "^1.2.1",
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/style-resources": "^0.1.2",
+    "animate.css": "^3.7.2",
     "bulma-helpers": "^0.3.8",
     "cross-env": "^5.2.0",
     "dayjs": "^1.8.14",
@@ -25,7 +26,8 @@
     "sass-loader": "^7.1.0",
     "viewport-units-buggyfill": "^0.6.2",
     "vue-fullpage.js": "^0.1.3",
-    "vue-svg-loader": "^0.12.0"
+    "vue-svg-loader": "^0.12.0",
+    "vue2-animate": "^2.1.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

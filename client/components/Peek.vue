@@ -1,7 +1,9 @@
 <template>
-  <div class="wrap">
+  <div class="wrap center">
     <div :class="['peek', `peek-${name}`]">
-      <div class="name is-size-5-mobile">{{ name }}</div>
+      <a class="name is-size-5-mobile is-unselectable" :href="`/#${name}`">{{
+        name
+      }}</a>
       <div class="path"></div>
     </div>
   </div>
@@ -47,5 +49,9 @@ export default {
   background: #4f4f4f;
   width: 1px;
   height: 140px;
+}
+
+a.name:hover {
+  color: #ffffff;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <div class="container" v-bind="$attrs">
+  <div class="container is-size-6 is-size-6-mobile" v-bind="$attrs">
     <div class="columns">
-      <div class="column is-7 is-offset-3" v-bind="$attrs">
+      <div class="column is-8 is-offset-2" v-bind="$attrs">
         <h2 class="subtitle is-hidden-mobile">{{ datetime }}</h2>
         <h3 class="title is-3">{{ title }}</h3>
         <p class="is-size-5-mobile">

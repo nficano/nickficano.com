@@ -1,4 +1,5 @@
 @import './mixins';
+@import './animations';
 @import '~bulma/sass/utilities/all';
 @import '~bulma-helpers/sass/helpers/all';
 
@@ -6,7 +7,8 @@
 @include font-face('PT Sans', '../fonts/PT-Sans', 'normal', 100);
 
 
-
+$animationDuration: 0.5s;
+@import "vue2-animate/src/sass/vue2-animate.scss";
 $dark: #292C32;
 $body-family: 'PT Sans', Avenir, sans-serif;
 $body-background-color: #292C32;
@@ -24,6 +26,11 @@ $link-hover: #00d1b2;
 $title-family: 'Bebas';
 $title-size: $size-1;
 $title-weight: 200;
+$control-radius: 0;
+$label-color: #9FA0A3;
+$input-background-color: transparent;
+$input-placeholder-color: #515358;
+$input-border-color: #55575D;
 :root {
   @include mobile {
     font-size: 16px;
@@ -54,6 +61,18 @@ $title-weight: 200;
 #fp-nav ul li a span {
   background: #88898D;
   opacity: .3;
+}
+
+a.button {
+  transition: all 0.2s ease-in-out;
+  &:hover,
+  &:active,
+  &:focus {
+    color: $white;
+    border: 0.1rem solid $white;
+    border-radius: 6rem;
+    transform: scale(1.1);
+  }
 }
 
 @import '~bulma';
