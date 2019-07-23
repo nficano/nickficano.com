@@ -92,7 +92,7 @@
             brief="How-to coerce all programming related files to open in your preferred text editor by default."
           />
           <div class="control has-text-centered">
-            <a href="#" class="button">View All Posts</a>
+            <nuxt-link to="/blog" class="button">View All Posts</nuxt-link>
           </div>
         </div>
         <peek name="contact" />
