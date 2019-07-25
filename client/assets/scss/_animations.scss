@@ -42,18 +42,6 @@
 	}
 }
 
-.title {
-  opacity: 0;
-  animation: 200ms ease-out .5s 1 title-slide-up;
-  animation-fill-mode: both;
-}
-
-.subtitle {
-  opacity: 0;
-  animation: 200ms ease-out .800s 1 subtitle-slide-down;
-  animation-fill-mode: both;
-}
-
 .social {
   opacity: 0;
   animation: 350ms ease-out .990s 1 subtitle-slide-down;

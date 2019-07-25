@@ -29,7 +29,18 @@ module.exports = {
     { src: '@/plugins/ios-100vh.client.js' },
     { src: '@/plugins/vue-fullpage.client.js', ssr: false }
   ],
-  modules: ['@nuxtjs/pwa', '@nuxtjs/eslint-module'],
+  modules: [
+    '@nuxtjs/pwa',
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/markdownit',
+    '@nuxtjs/google-analytics'
+  ],
+  markdownit: {
+    preset: 'default',
+    linkify: true,
+    breaks: true,
+    use: ['markdown-it-div', 'markdown-it-attrs']
+  },
   build: {
     postcss: {
       preset: {

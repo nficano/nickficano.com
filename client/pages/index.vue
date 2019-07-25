@@ -4,7 +4,7 @@
       <page-section>
         <div class="hero is-fullheight">
           <div class="hero-body">
-            <div class="container has-text-centered">
+            <div class="container has-text-centered is-hidden-when-inactive">
               <h1 class="title">Nick Ficano</h1>
               <h2 class="subtitle">New York, NY &ndash; Software Engineer</h2>
               <div class="social">
@@ -74,12 +74,15 @@
             </a>
           </project>
 
-          <project icon="tangerine">
+          <project icon="tangerine" :class="['is-hidden-mobile']">
             <a href="https://github.com/nficano/tangerine">
               tangerine - A Flask inspired, decorator based API wrapper for
               writing Slack bots.
             </a>
           </project>
+          <div class="control has-text-centered">
+            <nuxt-link to="/projects" class="button">More Projects</nuxt-link>
+          </div>
         </div>
         <peek name="posts" />
       </page-section>
@@ -92,36 +95,17 @@
             brief="How-to coerce all programming related files to open in your preferred text editor by default."
           />
           <div class="control has-text-centered">
-            <nuxt-link to="/blog" class="button">View All Posts</nuxt-link>
+            <nuxt-link to="/blog" class="button">More Posts</nuxt-link>
           </div>
         </div>
         <peek name="contact" />
       </page-section>
       <page-section>
-        <page-heading title="Contact" subtitle="Get in touch" />
-        <div class="section section-contact">
-          <div class="container">
-            <div class="columns">
-              <div class="column is-6 is-offset-3">
-                <text-input
-                  name="name"
-                  label="Name"
-                  placeholder="Steven Lewis"
-                />
-                <text-input
-                  name="email"
-                  label="Email"
-                  placeholder="customercare@gogoair.com"
-                />
-                <text-input
-                  name="message"
-                  label="Message"
-                  placeholder="What do you think Clifford's actual height was?"
-                />
-                <div class="control has-text-centered">
-                  <a href="#" class="button">Send</a>
-                </div>
-              </div>
+        <div class="hero is-fullheight">
+          <div class="hero-body">
+            <div class="container has-text-centered">
+              <h1 class="title">say hello</h1>
+              <h2 class="subtitle">nficano@gmail.com</h2>
             </div>
           </div>
         </div>
@@ -132,7 +116,6 @@
 
 <script>
 import Icon from '~/components/Icon.vue'
-import TextInput from '~/components/TextInput.vue'
 import Peek from '~/components/Peek.vue'
 import Project from '~/components/Project.vue'
 import PageSection from '~/components/PageSection.vue'
@@ -145,7 +128,6 @@ export default {
     PageSection,
     PageHeading,
     Peek,
-    TextInput,
     Project
   },
   data() {
@@ -186,17 +168,28 @@ export default {
         }
       }
     }
-  },
-  mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-      setTimeout(() => this.$nuxt.$loading.finish(), 500)
-    })
   }
 }
 </script>
 
 <style lang="scss">
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.3s ease-out;
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+  transform-origin: 50% 50%;
+}
+.hero.is-fullheight .hero-body > .is-hidden-when-inactive {
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+}
+.active > .hero.is-fullheight .hero-body > .is-hidden-when-inactive {
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+}
 .fp-tableCell {
   display: flex;
   align-items: center;

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-bind="$attrs">
     <div class="columns is-mobile">
       <div
         class="column is-11 is-10-desktop is-offset-1-desktop is-offset-1-tablet"

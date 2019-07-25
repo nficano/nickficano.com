@@ -4,7 +4,7 @@
       <div class="column is-8 is-offset-2" v-bind="$attrs">
         <h2 class="subtitle is-hidden-mobile">{{ datetime }}</h2>
         <h3 class="title is-3">{{ title }}</h3>
-        <p class="is-size-5-mobile">
+        <p class="is-size-8-mobile">
           {{ brief }}
         </p>
       </div>
@@ -41,6 +41,12 @@ h2 {
 
 .subtitle {
   margin-bottom: 2rem;
+}
+
+.subtitle,
+.title {
+  opacity: 1;
+  animation: none;
 }
 .container {
   margin-top: 2rem;
