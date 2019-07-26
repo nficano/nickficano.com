@@ -53,6 +53,6 @@ h2 {
   letter-spacing: 0.03rem;
 }
 p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0rem;
 }
 </style>

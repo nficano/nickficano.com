@@ -33,7 +33,12 @@ module.exports = {
     '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
     '@nuxtjs/markdownit',
-    '@nuxtjs/google-analytics'
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-13233758-1'
+      }
+    ]
   ],
   markdownit: {
     preset: 'default',

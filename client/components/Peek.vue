@@ -48,7 +48,7 @@ export default {
 .path {
   background: #4f4f4f;
   width: 1px;
-  height: 140px;
+  height: 5rem;
 }
 
 a.name:hover {

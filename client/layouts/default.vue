@@ -23,10 +23,11 @@ html {
 
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.5s;
+  transition: all 0.3s ease-out;
 }
 .page-enter,
 .page-leave-active {
   opacity: 0;
+  transform-origin: 50% 50%;
 }
 </style>
