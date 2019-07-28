@@ -31,8 +31,9 @@ module.exports = {
   ],
   modules: [
     '@nuxtjs/pwa',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
     '@nuxtjs/eslint-module',
-    '@nuxtjs/markdownit',
     [
       '@nuxtjs/google-analytics',
       {
@@ -40,11 +41,13 @@ module.exports = {
       }
     ]
   ],
-  markdownit: {
-    preset: 'default',
-    linkify: true,
-    breaks: true,
-    use: ['markdown-it-div', 'markdown-it-attrs']
+  sitemap: {
+    hostname: 'https://example.com',
+    gzip: true,
+    exclude: ['/admin/']
+  },
+  robots: {
+    UserAgent: '*'
   },
   build: {
     postcss: {
@@ -55,6 +58,13 @@ module.exports = {
       }
     },
     extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.md$/,
+        loader: 'frontmatter-markdown-loader',
+        options: {
+          vue: true
+        }
+      })
       const svgRule = config.module.rules.find(rule => rule.test.test('.svg'))
       svgRule.test = /\.(png|jpe?g|gif|webp)$/
       config.module.rules.push({

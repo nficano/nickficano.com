@@ -1,7 +1,8 @@
 @import './mixins';
 @import './animations';
+@import './sharethis';
+@import './prism';
 @import '~bulma/sass/utilities/all';
-@import '~bulma-helpers/sass/helpers/all';
 
 @include font-face('Bebas', '../fonts/Bebas', 'normal', 500);
 @include font-face('PT Sans', '../fonts/PT-Sans', 'normal', 100);

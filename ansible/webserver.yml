@@ -1,0 +1,12 @@
+---
+
+- hosts: webservers
+  become: yes
+
+  roles:
+#    - carefuldog
+    - common
+    - ntp
+    - nginx
+    - users
+    - letsencrypt

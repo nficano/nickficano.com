@@ -28,7 +28,7 @@ export default {
     return {
       options: {
         menu: '#menu',
-        anchors: ['hero', 'about', 'projects', 'posts', 'contact'],
+        anchors: ['hero', 'about', 'projects', 'blog', 'contact'],
         sectionSelector: '.fp-section',
         verticalCentered: false,
         css3: true,
@@ -44,21 +44,14 @@ export default {
         licenseKey: '71BA395D-00834D03-A6571AD9-9C5CB62E',
         scrollHorizontallyKey: '82FBEF60-E1BF40C7-B2DE869C-5420175B',
         scrollHorizontally: false,
-        onLeave: function(origin, destination, direction) {
-          const destPeek = document.querySelector(`.peek-${destination.anchor}`)
-          if (destPeek) {
-            destPeek.classList.add('is-unfocused')
-          }
-          const originPeek = document.querySelector(`.peek-${origin.anchor}`)
-          if (originPeek) {
-            originPeek.classList.remove('is-unfocused')
-          }
-        },
-        afterLoad: function(origin, destination, direction) {
-          const dest = document.querySelector(`.columns-${destination.anchor}`)
-          if (dest) {
-            dest.classList.remove('is-action-potential')
-          }
+        onLeave: function(origin, destination) {
+          // toggle peeks visibility when entering/leaving a section.
+          document
+            .querySelectorAll(`.peek-${destination.anchor}`)
+            .forEach(el => el.classList.add('is-unfocused'))
+          document
+            .querySelectorAll(`.peek-${origin.anchor}`)
+            .forEach(el => el.classList.remove('is-unfocused'))
         }
       }
     }

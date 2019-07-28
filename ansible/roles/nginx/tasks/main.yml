@@ -1,26 +1,10 @@
 ---
-# file: roles/nginx/tasks/main.yml
-
-- name: adding nginx signing key
-  apt_key:
-    url: http://nginx.org/keys/nginx_signing.key
+- name: Ensure NGINX is installed.
+  package:
+    name: nginx
     state: present
 
-- name: update apt cache
-  apt:
-    update_cache: yes
-
-- name: install
-  apt:
-    pkg: nginx
-    state: latest
-
-- name: remove default site
-  file:
-    path: /etc/nginx/conf.d/default.conf
-    state: absent
-
-- name: write nginx configuration
+- name: Write NGINX configuration
   template:
     src: templates/nginx.conf
     dest: /etc/nginx/nginx.conf
@@ -28,14 +12,17 @@
   notify:
     - reload nginx
 
-- name: create nginx snippets directory
+- name: Write NGINX vhosts
+  template:
+    src: templates/vhosts.conf
+    dest: /etc/nginx/conf.d/com.nickficano.nginx.conf
+  become: yes
+  notify:
+    - reload nginx
+
+- name: Ensure snippets directory exists
   file:
     path: /etc/nginx/snippets
     state: directory
     follow: yes
   become: yes
-
-- name: start nginx
-  service:
-    name: nginx
-    state: started

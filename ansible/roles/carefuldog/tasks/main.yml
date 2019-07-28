@@ -1,0 +1,27 @@
+- name: Fetch latest changes to origin master.
+  shell: git fetch origin master
+  delegate_to: localhost
+  ignore_errors: True
+  become: no
+  tags:
+    - deploy
+    - always # always run unless explicitly skipped
+
+- name: Ensure local and remote are up-to-date.
+  shell: git status | grep "up.to.date with 'origin/master"
+  delegate_to: localhost
+  ignore_errors: True
+  register: git_up_to_date
+  become: no
+  tags:
+    - deploy
+    - always # always run unless explicitly skipped
+
+- name: Abort the deploy.
+  fail:
+    msg: 'Local and remote are not up-to-date!'
+  when: git_up_to_date is failed
+  become: no
+  tags:
+    - deploy
+    - always # always run unless explicitly skipped

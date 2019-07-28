@@ -25,6 +25,7 @@
     </div>
   </page-section>
 </template>
+
 <script>
 import PageSection from '~/components/PageSection.vue'
 import Icon from '~/components/Icon.vue'
