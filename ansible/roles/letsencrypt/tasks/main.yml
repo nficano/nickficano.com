@@ -45,6 +45,7 @@
   template:
     src: templates/ssl-params.conf
     dest: /etc/nginx/snippets/ssl-params.conf
-  become: yes
   notify:
     - reload nginx
+  tags:
+    - jump
