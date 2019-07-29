@@ -27,7 +27,7 @@ module.exports = {
   ],
   plugins: [
     { src: '@/plugins/ios-100vh.client.js' },
-    { src: '~/plugins/fullpage.js', ssr: false }
+    { src: '~/plugins/fullpage.js', mode: 'client' }
   ],
   modules: [
     '@nuxtjs/pwa',
