@@ -1,0 +1,25 @@
+---
+- name: Ensure all necessary webapp directories exist.
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+    mode: 0755
+    owner: webapps
+    group: webapps
+  with_items:
+    - /var/log/com.nickficano
+    - /usr/src/com.nickficano
+
+- name: Synchronize Repository with Upstream Changes
+  become: yes
+  become_user: webapps
+  git:
+    repo: git@github.com:nficano/nickficano.com.git
+    dest: /usr/src/com.nickficano
+    depth: 1
+    accept_hostkey: yes
+    recursive: no
+    update: yes
+    version: master
+    force: yes

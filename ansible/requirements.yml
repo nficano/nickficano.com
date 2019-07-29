@@ -1,0 +1,3 @@
+- src: geerlingguy.pip
+- src: geerlingguy.supervisor
+- src: geerlingguy.nodejs
