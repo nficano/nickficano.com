@@ -40,10 +40,21 @@ module.exports = {
       {
         id: 'UA-13233758-1'
       }
+    ],
+    [
+      '@nuxtjs/yandex-metrika',
+      {
+        id: '54642274',
+        webvisor: true,
+        clickmap: true,
+        useCDN: false,
+        trackLinks: true,
+        accurateTrackBounce: true
+      }
     ]
   ],
   sitemap: {
-    hostname: 'https://example.com',
+    hostname: 'https://nickficano.com',
     gzip: true,
     exclude: ['/admin/']
   },

@@ -19,6 +19,7 @@
     "@nuxtjs/robots": "^2.3.0",
     "@nuxtjs/sitemap": "^1.2.0",
     "@nuxtjs/style-resources": "^0.1.2",
+    "@nuxtjs/yandex-metrika": "^0.1.2",
     "animate.css": "^3.7.2",
     "cross-env": "^5.2.0",
     "dayjs": "^1.8.14",
