@@ -49,3 +49,12 @@
     - reload nginx
   tags:
     - jump
+
+- name: write ssl configuration snippet for nginx
+  template:
+    src: templates/ssl-snippets.conf
+    dest: /etc/nginx/snippets/ssl-snippets.conf
+  notify:
+    - reload nginx
+  tags:
+    - jump

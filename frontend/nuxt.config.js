@@ -34,6 +34,7 @@ module.exports = {
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
     '@nuxtjs/eslint-module',
+    'nuxt-fullpage.js',
     [
       '@nuxtjs/google-analytics',
       {

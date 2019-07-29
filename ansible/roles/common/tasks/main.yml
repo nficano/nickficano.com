@@ -8,12 +8,12 @@
   with_items:
     - "nficano"
 
-- name: Ensure git-core is installed.
-  package:
-    name: git-core
-    state: present
-
 - name: Ensure aptitude is installed.
   package:
     name: aptitude
+    state: present
+
+- name: Ensure git-core is installed.
+  package:
+    name: git-core
     state: present
