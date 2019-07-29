@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import FullPage from 'vue-fullpage.js'
+import VueFullpage from 'fullpage-vue'
 import 'fullpage.js/dist/fullpage.css'
 
-Vue.use(FullPage)
+Vue.use(VueFullpage)

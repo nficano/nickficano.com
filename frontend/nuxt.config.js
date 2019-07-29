@@ -49,6 +49,7 @@ module.exports = {
     UserAgent: '*'
   },
   build: {
+    transpile: ['vue-fullpage.js'],
     postcss: {
       preset: {
         features: {
