@@ -27,7 +27,7 @@ module.exports = {
   ],
   plugins: [
     { src: '@/plugins/ios-100vh.client.js' },
-    { src: '~/plugins/fullpage.js', mode: 'client' }
+    { src: '@/plugins/fullpage.js', mode: 'client' }
   ],
   modules: [
     '@nuxtjs/pwa',
@@ -49,7 +49,6 @@ module.exports = {
     UserAgent: '*'
   },
   build: {
-    transpile: ['vue-fullpage.js'],
     postcss: {
       preset: {
         features: {
