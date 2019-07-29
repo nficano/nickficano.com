@@ -1,6 +1,6 @@
 <template>
   <div>
-    <full-page id="fullpage" ref="fullpage" :options="options">
+    <full-page ref="fullpage" :options="options">
       <hero-section />
       <about-section />
       <project-section />

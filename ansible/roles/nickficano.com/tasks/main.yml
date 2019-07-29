@@ -34,7 +34,8 @@
     update: yes
     version: master
     force: yes
-
+  tags:
+    - jump
 
 - name: Install Client Dependencies
   become: yes
@@ -42,6 +43,8 @@
   yarn:
     executable: /usr/bin/yarn
     path: /usr/src/com.nickficano/frontend
+  tags:
+    - jump
 
 - name: Build Client
   become: yes
@@ -51,3 +54,5 @@
     chdir: /usr/src/com.nickficano/frontend
   notify:
     - restart supervisor
+  tags:
+    - jump
