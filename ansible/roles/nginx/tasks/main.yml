@@ -11,6 +11,8 @@
   become: yes
   notify:
     - reload nginx
+  tags:
+    - jump
 
 - name: Write NGINX vhosts
   template:

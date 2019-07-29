@@ -47,6 +47,8 @@
     dest: /etc/nginx/snippets/ssl-params.conf
   notify:
     - reload nginx
+  tags:
+    - jump
 
 - name: write ssl configuration snippet for nginx
   template:
