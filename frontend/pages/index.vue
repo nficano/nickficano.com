@@ -1,12 +1,12 @@
 <template>
   <div>
-    <full-page ref="fullpage" :options="options">
+    <div v-fullpage:myFullpage="options">
       <hero-section />
       <about-section />
       <project-section />
       <blog-section />
       <contact-section />
-    </full-page>
+    </div>
   </div>
 </template>
 

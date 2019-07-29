@@ -27,13 +27,14 @@ module.exports = {
   ],
   plugins: [
     { src: '@/plugins/ios-100vh.client.js' },
-    { src: '@/plugins/fullpage.js', mode: 'client' }
+    { src: '~/plugins/fullpage.js', ssr: false }
   ],
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
     '@nuxtjs/eslint-module',
+    'nuxt-fullpage.js',
     [
       '@nuxtjs/google-analytics',
       {
