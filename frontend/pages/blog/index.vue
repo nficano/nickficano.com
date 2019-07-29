@@ -6,6 +6,7 @@
         title="Change Mac OS default file associations with this command line utility"
         datetime="2 hours ago"
         brief="How-to coerce all programming related files to open in your preferred text editor by default."
+        slug="change-macos-default-file-associations-command-line-duti"
       />
     </div>
   </div>

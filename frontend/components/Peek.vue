@@ -30,6 +30,7 @@ export default {
   text-align: center;
   position: absolute;
   align-self: center;
+  bottom: -5%;
   display: flex;
   flex-direction: column;
   align-items: center;
