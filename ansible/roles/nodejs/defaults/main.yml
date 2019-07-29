@@ -1,2 +1,0 @@
-nodejs_version: "8.x"
-npm_config_prefix: "/usr/local/lib/npm"

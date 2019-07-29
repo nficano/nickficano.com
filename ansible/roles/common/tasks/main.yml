@@ -1,25 +1,14 @@
 ---
 # file: roles/common/tasks/main.yml
 
-- name: add public keys from github
-  authorized_key: user={{ app.deploy_user }} key=https://github.com/{{ item }}.keys
+- name: Add public keys from Github.
+  authorized_key:
+    user: "{{ deploy_user }}"
+    key: https://github.com/{{ item }}.keys
   with_items:
-    - nficano
+    - "nficano"
 
-- name: update apt-get packages
-  apt: >
-    update_cache=yes
-    cache_valid_time=3600
-
-- name: upgrade apt-get packages
-  apt: upgrade=yes
-
-- name: install some of them packages
-  apt: name={{ item }} update_cache=yes state=latest
-  with_items:
-    - git-core
-
-- name: write .inputrc
-  template:
-    src: templates/inputrc
-    dest: /home/{{ app.deploy_user }}/.inputrc
+- name: Ensure git-core is installed.
+  package:
+    name: git-core
+    state: present

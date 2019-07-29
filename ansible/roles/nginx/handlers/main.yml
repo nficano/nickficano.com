@@ -1,6 +1,4 @@
 ---
-# file: roles/nginx/handlers/main.yml
-
 - name: restart nginx
   service:
     name: nginx

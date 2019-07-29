@@ -1,12 +1,26 @@
 ---
-# file: roles/ntp/tasks/main.yml
+- name: Ensure NTP-related packages are installed.
+  package:
+    name: ntp
+    state: present
 
-- name: install
-  apt: pkg=ntp state=present
+- name: Ensure tzdata package is installed (Linux).
+  package:
+    name: tzdata
+    state: present
 
-- name: start service
-  service: name=ntp enabled=yes
+- name: Set timezone
+  timezone:
+    name: "Etc/UTC"
 
-- name: write ntp configuration
-  template: src=templates/ntp.conf dest=/etc/ntp.conf
-  notify: restart ntp daemon
+- name: Ensure NTP is running and enabled as configured.
+  service:
+    name: ntp
+    state: started
+    enabled: yes
+
+- name: Generate ntp.conf file
+  template:
+    src: ntp.conf.j2
+    dest: /etc/ntp.conf
+  notify: restart ntp

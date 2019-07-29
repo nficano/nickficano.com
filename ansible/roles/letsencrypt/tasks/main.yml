@@ -1,135 +1,51 @@
 ---
-# file: roles/letsencrypt/tasks/main.yml
+- name: Ensure Certbot PPA is installed.
+  apt_repository:
+    repo: ppa:certbot/certbot
 
-- name: install dependancies
-  apt: name={{ item }} update_cache=yes state=latest
-  with_items:
-    - python
-    - python-dev
-    - python-virtualenv
-    - gcc
-    - dialog
-    - libaugeas0
-    - libssl-dev
-    - libffi-dev
-    - ca-certificates
-    - python-pip
-    - git
-  tags:
-    - letsencrypt
+- name: Ensure python-certbot-nginx is installed.
+  package:
+    name: python-certbot-nginx
+    state: present
 
-- name: install virtualenv
-  pip:
-    name: virtualenv
-  tags:
-    - letsencrypt
+- name: Ensure ssl-cert is installed.
+  package:
+    name: ssl-cert
+    state: present
 
-- name: install prerequisites
-  pip:
-    virtualenv: "{{ letsencrypt_venv }}"
-    virtualenv_site_packages: no
-    name: "{{ item }}"
+- name: Ensure SSL default snakeoil certificate is installed.
+  command: "make-ssl-cert generate-default-snakeoil --force-overwrite"
+
+- name: Ensure SSL certificate is installed.
+  command: "certbot --nginx --non-interactive --agree-tos -m nficano@gmail.com -d nickficano.com -d www.nickficano.com -d api.nickficano.com --expand"
+
+- name: install openssl
+  package:
+    name: openssl
     state: latest
-    virtualenv_python: python2
-  become: yes
-  with_items:
-    - setuptools
-    - pip
-  tags:
-    - letsencrypt
 
-- name: install letsencrypt
-  pip:
-    virtualenv: "{{ letsencrypt_venv }}"
-    virtualenv_site_packages: no
-    name: letsencrypt
-    state: latest
-  become: yes
-  tags:
-    - letsencrypt
-
-- name: create webroot directory
+- name: create output directory for dhparam
   file:
-    path: "{{ letsencrypt_webroot_path }}"
+    path: /etc/ssl
     state: directory
-    follow: yes
-    mode: 0755
-  become: yes
-  tags:
-    - letsencrypt
 
-- name: attempt to get cert via webroot authenticator
-  command: "{{ letsencrypt_command }} -a webroot --webroot-path {{ letsencrypt_webroot_path }} certonly"
-  become: yes
+- name: generate diffie-hellman parameter file
+  command: "openssl dhparam -dsaparam -out '/etc/ssl/dhparam-4096.pem' 4096"
   args:
-    creates: /etc/letsencrypt/live/{{ letsencrypt_cert_domains[0] }}
-  when: letsencrypt_authenticator == "webroot"
-  ignore_errors: True
-  tags:
-    - letsencrypt
+    creates: /etc/ssl/dhparam-4096.pem
 
-- name: attempt to get cert via standalone authenticator
-  command: "{{ letsencrypt_command }} -a standalone auth"
-  become: yes
-  args:
-    creates: /etc/letsencrypt/live/{{ letsencrypt_cert_domains[0] }}
-  tags:
-    - letsencrypt
-
-- name: update renewal configuration
-  ini_file:
-    section: renewalparams
-    option: "{{ item.key }}"
-    value: "{{ item.value }}"
-    dest: /etc/letsencrypt/renewal/{{ letsencrypt_cert_domains[0] }}.conf
-  become: yes
-  with_dict:
-    os_packages_only: False
-    verb: certonly
-    noninteractive_mode: False
-    uir: False
-    hsts: False
-    authenticator: '{{ letsencrypt_authenticator }}'
-  tags:
-    - letsencrypt
-
-- name: update renewal configuration webroot map
-  ini_file:
-    section: "[webroot_map]"
-    option: "{{ item }}"
-    value: "{{ letsencrypt_webroot_path }}"
-    dest: /etc/letsencrypt/renewal/{{ letsencrypt_cert_domains[0] }}.conf
-  become: yes
-  with_items: "{{ letsencrypt_cert_domains }}"
-  tags:
-    - letsencrypt
-
-- name: write cron for ssl cert auto-renewal
-  become: yes
+- name: write cron for auto-regenerating dhparams
   cron:
-    name: "Let's Encrypt Renewal"
-    special_time: "{{ letsencrypt_renewal_frequency }}"
-    job: "{{ letsencrypt_venv }}/bin/certbot renew --quiet  --post-hook \"service nginx restart\""
-    state: "{{ 'present' if letsencrypt_renewal_enabled else 'absent' }}"
-  tags:
-    - letsencrypt
-
-- name: write ssl configuration snippet for nginx
-  template:
-    src: templates/nginx_ssl_snippet.conf
-    dest: /etc/nginx/snippets/ssl-{{ app.name }}.conf
-  become: yes
-  notify:
-    - reload nginx
-  tags:
-    - letsencrypt
+    name: "Diffie-Hellman parameter update"
+    job: openssl dhparam -dsaparam -out '/etc/ssl/dhparam-4096.pem' 4096
+    state: present
+    special_time: weekly
 
 - name: write ssl dhparams configuration snippet for nginx
   template:
-    src: templates/nginx_ssl_params.conf
+    src: templates/ssl-params.conf
     dest: /etc/nginx/snippets/ssl-params.conf
-  become: yes
   notify:
     - reload nginx
   tags:
-    - letsencrypt
+    - jump

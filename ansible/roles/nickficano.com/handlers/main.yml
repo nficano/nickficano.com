@@ -1,8 +1,0 @@
----
-# file: roles/nickficano.com/handles/main.yml
-
-- name: restart app process
-  supervisorctl:
-    name: nf_uwsgi
-    state: restarted
-  become: yes

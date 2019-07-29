@@ -1,5 +1,0 @@
----
-# file: roles/nickficano.com/meta/main.yml
-
-dependencies:
-  - { role: users }
