@@ -1,12 +1,14 @@
 <template>
   <div>
-    <full-page ref="fullpage" :options="options">
-      <hero-section />
-      <about-section />
-      <project-section />
-      <blog-section />
-      <contact-section />
-    </full-page>
+    <no-ssr>
+      <full-page ref="fullpage" :options="options">
+        <hero-section />
+        <about-section />
+        <project-section />
+        <blog-section />
+        <contact-section />
+      </full-page>
+    </no-ssr>
   </div>
 </template>
 
