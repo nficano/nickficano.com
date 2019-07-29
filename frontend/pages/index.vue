@@ -42,8 +42,6 @@ export default {
         easing: 'easeInOutCubic',
         easingcss3: 'ease',
         licenseKey: '71BA395D-00834D03-A6571AD9-9C5CB62E',
-        scrollHorizontallyKey: '82FBEF60-E1BF40C7-B2DE869C-5420175B',
-        scrollHorizontally: false,
         onLeave: function(origin, destination) {
           // toggle peeks visibility when entering/leaving a section.
           document

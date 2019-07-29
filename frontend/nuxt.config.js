@@ -25,7 +25,10 @@ module.exports = {
       lang: 'scss'
     }
   ],
-  plugins: [{ src: '@/plugins/ios-100vh.client.js' }],
+  plugins: [
+    { src: '@/plugins/ios-100vh.client.js' },
+    { src: '~/plugins/fullpage', ssr: false }
+  ],
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
