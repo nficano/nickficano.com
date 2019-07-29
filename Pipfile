@@ -5,18 +5,9 @@ name = "pypi"
 
 [packages]
 ansible = "*"
-ipython = "*"
-pyicloud = "*"
-pytz = "*"
-requests = "*"
-simplejson = "*"
-Flask-RESTful = "*"
-Flask = "*"
-pyyaml = "*"
 
 [dev-packages]
 ipython = "*"
-gixy = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"
