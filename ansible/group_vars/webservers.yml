@@ -6,6 +6,7 @@ supervisor_password: !vault |
           32303231313739343433396131353063623834363733646165386338623064346233306366353436
           6130626266633632660a643934313832643531356133346463373165376337376336623934663534
           35333434343534363934343937663434323563353735346535383364336264336465
+supervisor_programs:
   - name: 'com.nickficano.frontend'
     command: yarn start
     state: present
@@ -23,3 +24,5 @@ supervisor_password: !vault |
       stopsignal=QUIT
 
 nodejs_version: "12.x"
+pip_package: python3-pip
+pip_executable: pip3

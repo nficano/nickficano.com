@@ -5,12 +5,13 @@
 
   roles:
     # - carefuldog
-    # - common
-    # - ntp
-    # - nginx
-    # - users
-    # - letsencrypt
-    - nickficano.com
+    - common
+    - ntp
+    - nginx
+    - users
+    - letsencrypt
+    # - ocha.yarn
     - geerlingguy.nodejs
     - geerlingguy.pip
     - geerlingguy.supervisor
+    - nickficano.com

@@ -1,4 +1,14 @@
 ---
+- name: Remove default snippets.
+  file:
+    path: "/etc/nginx/snippets/{{ item }}.conf"
+    state: absent
+  with_items:
+    - snakeoil.conf
+    - fastcgi-php.conf
+  notify:
+    - reload nginx
+
 - name: Ensure all necessary webapp directories exist.
   file:
     path: "{{ item }}"
@@ -17,9 +27,27 @@
   git:
     repo: git@github.com:nficano/nickficano.com.git
     dest: /usr/src/com.nickficano
+    key_file: /usr/src/webapps/.ssh/id_rsa
     depth: 1
     accept_hostkey: yes
     recursive: no
     update: yes
     version: master
     force: yes
+
+
+- name: Install Client Dependencies
+  become: yes
+  become_user: webapps
+  yarn:
+    executable: /usr/bin/yarn
+    path: /usr/src/com.nickficano/frontend
+
+- name: Build Client
+  become: yes
+  become_user: webapps
+  shell: yarn build
+  args:
+    chdir: /usr/src/com.nickficano/frontend
+  notify:
+    - restart supervisor

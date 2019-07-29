@@ -12,3 +12,8 @@
   package:
     name: git-core
     state: present
+
+- name: Ensure aptitude is installed.
+  package:
+    name: aptitude
+    state: present
