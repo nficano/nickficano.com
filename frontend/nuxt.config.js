@@ -27,36 +27,23 @@ module.exports = {
   ],
   plugins: [
     { src: '@/plugins/ios-100vh.client.js' },
-    { src: '~/plugins/fullpage', ssr: false }
+    { src: '~/plugins/fullpage.js', ssr: false }
   ],
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
     '@nuxtjs/eslint-module',
-    'nuxt-fullpage.js',
     [
       '@nuxtjs/google-analytics',
       {
         id: 'UA-13233758-1'
       }
-    ],
-    [
-      '@nuxtjs/yandex-metrika',
-      {
-        id: '54642274',
-        webvisor: true,
-        clickmap: true,
-        useCDN: false,
-        trackLinks: true,
-        accurateTrackBounce: true
-      }
     ]
   ],
   sitemap: {
-    hostname: 'https://nickficano.com',
-    gzip: true,
-    exclude: ['/admin/']
+    hostname: 'https://www.nickficano.com',
+    gzip: true
   },
   robots: {
     UserAgent: '*'
