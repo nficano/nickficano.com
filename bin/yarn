@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# project specific wrapper around yarn.
+
+set -e
+
+YARN="$(which -a yarn | sed -n 2p)"
+FRONTEND_DIR="$(git rev-parse --show-toplevel)/frontend"
+
+[ -z "$YARN" ] && exit 2
+
+env "$YARN" --cwd $FRONTEND_DIR "$@"

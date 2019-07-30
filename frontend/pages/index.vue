@@ -40,6 +40,7 @@ export default {
         fitToSectionDelay: 1000,
         scrollBar: false,
         easing: 'easeInOutCubic',
+        responsiveHeight: 800,
         easingcss3: 'ease',
         licenseKey: '71BA395D-00834D03-A6571AD9-9C5CB62E',
         onLeave: function(origin, destination) {

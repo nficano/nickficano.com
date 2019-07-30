@@ -30,12 +30,12 @@ export default {
   text-align: center;
   position: absolute;
   align-self: center;
-  bottom: -5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: opacity 750ms linear;
   opacity: 1;
+  bottom: -2rem;
   &.is-unfocused {
     opacity: 0;
   }
@@ -54,5 +54,11 @@ export default {
 
 a.name:hover {
   color: #ffffff;
+}
+
+@media (max-height: 800px) {
+  .peek {
+    display: none;
+  }
 }
 </style>

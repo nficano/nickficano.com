@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <div class="section is-paddingless-mobile">
     <div class="container" v-bind="$attrs">
       <h1 class="title">{{ title }}</h1>
       <h2 class="subtitle">{{ subtitle }}</h2>

@@ -47,6 +47,12 @@ $input-border-color: #55575D;
   }
 }
 
+.is-paddingless-mobile {
+  @media (max-height: 800px) {
+    padding: 0 !important;
+  }
+}
+
 .peek {
   @include mobile {
     bottom: -6rem;

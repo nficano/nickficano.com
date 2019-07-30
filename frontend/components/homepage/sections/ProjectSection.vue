@@ -19,7 +19,7 @@
         <nuxt-link to="/projects" class="button">More Projects</nuxt-link>
       </div>
     </div>
-    <peek name="posts" />
+    <peek name="blog" />
   </page-section>
 </template>
 <script>
