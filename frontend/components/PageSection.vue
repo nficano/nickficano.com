@@ -9,3 +9,11 @@ export default {
   name: 'PageSection'
 }
 </script>
+
+<style lang="scss">
+@media (max-height: 400px) {
+  .fp-section {
+    height: auto !important;
+  }
+}
+</style>
