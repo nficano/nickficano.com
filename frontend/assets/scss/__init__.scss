@@ -48,7 +48,7 @@ $input-border-color: #55575D;
 }
 
 .is-paddingless-mobile {
-  @media (max-height: 800px) {
+  @media (max-height: 600px) {
     padding: 0 !important;
   }
 }
