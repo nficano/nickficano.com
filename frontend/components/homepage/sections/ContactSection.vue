@@ -9,17 +9,14 @@
           </h2>
         </div>
       </div>
-      <peek name="pgp" />
     </div>
   </page-section>
 </template>
 <script>
 import PageSection from '~/components/PageSection.vue'
-import Peek from '~/components/Peek.vue'
 export default {
   components: {
-    PageSection,
-    Peek
+    PageSection
   }
 }
 </script>

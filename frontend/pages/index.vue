@@ -6,7 +6,6 @@
       <project-section />
       <blog-section />
       <contact-section />
-      <pgp-section />
     </div>
   </div>
 </template>
@@ -17,15 +16,13 @@ import BlogSection from '~/components/homepage/sections/BlogSection.vue'
 import ContactSection from '~/components/homepage/sections/ContactSection.vue'
 import HeroSection from '~/components/homepage/sections/HeroSection.vue'
 import ProjectSection from '~/components/homepage/sections/ProjectSection.vue'
-import PgpSection from '~/components/homepage/sections/PgpSection.vue'
 export default {
   components: {
     AboutSection,
     BlogSection,
     ContactSection,
     HeroSection,
-    ProjectSection,
-    PgpSection
+    ProjectSection
   },
   data() {
     return {
