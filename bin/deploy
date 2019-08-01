@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+
+PROJ_ROOT="$(git rev-parse --show-toplevel)"
+cd $PROJ_ROOT/ansible
+pipenv run ansible-playbook webserver.yml "$@"

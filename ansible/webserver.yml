@@ -4,13 +4,13 @@
   become: yes
 
   roles:
-    # - carefuldog
+    - carefuldog
     - common
     - ntp
     - nginx
     - users
-    #- letsencrypt
-    # - ocha.yarn
+    - letsencrypt
+    - Oefenweb.yarn
     - geerlingguy.nodejs
     - geerlingguy.pip
     - geerlingguy.supervisor

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# project specific wrapper around ssh.
+
+set -e
+
+tmpfile="/tmp/ssh_config.$$"
+rm -rf $tmpfile
+
+real_ssh="$(which -a ssh | sed -n 2p)"
+[ -z "$real_ssh" ] && exit 2
+
+ssh-config-shim production > $tmpfile
+env "$real_ssh" -F $tmpfile "$@"
+
+rm -rf $tmpfile

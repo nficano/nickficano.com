@@ -8,31 +8,24 @@
     name: python-certbot-nginx
     state: present
 
+
+- name: Ensure openssl is installed.
+  package:
+    name: openssl
+    state: latest
+
 - name: Ensure ssl-cert is installed.
   package:
     name: ssl-cert
     state: present
 
-- name: Ensure SSL default snakeoil certificate is installed.
-  command: "make-ssl-cert generate-default-snakeoil --force-overwrite"
+- name: Check if certificate already exists.
+  stat:
+    path: /etc/letsencrypt/live/nickficano.com/cert.pem
+  register: letsencrypt_cert
 
-- name: Ensure SSL certificate is installed.
-  command: "certbot --nginx --non-interactive --agree-tos -m nficano@gmail.com -d nickficano.com -d www.nickficano.com -d api.nickficano.com --expand"
-
-- name: install openssl
-  package:
-    name: openssl
-    state: latest
-
-- name: create output directory for dhparam
-  file:
-    path: /etc/ssl
-    state: directory
-
-- name: generate diffie-hellman parameter file
-  command: "openssl dhparam -dsaparam -out '/etc/ssl/dhparam-4096.pem' 4096"
-  args:
-    creates: /etc/ssl/dhparam-4096.pem
+- import_tasks: create-cert.yml
+  when: not letsencrypt_cert.stat.exists
 
 - name: write cron for auto-regenerating dhparams
   cron:
@@ -41,14 +34,20 @@
     state: present
     special_time: weekly
 
+- name: write cron for certbot renewal
+  cron:
+    name: Certbot automatic renewal.
+    job: "certbot renew --quiet --no-self-upgrade"
+    minute: "30"
+    hour: "3"
+    user: "{{ ansible_user | default(lookup('env', 'USER')) }}"
+
 - name: write ssl dhparams configuration snippet for nginx
   template:
     src: templates/ssl-params.conf
     dest: /etc/nginx/snippets/ssl-params.conf
   notify:
     - reload nginx
-  tags:
-    - jump
 
 - name: write ssl configuration snippet for nginx
   template:
