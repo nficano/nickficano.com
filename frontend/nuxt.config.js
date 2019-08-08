@@ -13,7 +13,8 @@ module.exports = {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content:
+          'A creative and candid NYC software engineer focused on creating efficiencies and instilling a culture of humor and collaboration. First hire at two startups.'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
