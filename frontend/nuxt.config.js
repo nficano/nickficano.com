@@ -5,7 +5,7 @@ module.exports = {
     host: '0.0.0.0'
   },
   head: {
-    title: 'Top GitHub Python Engineer in NYC',
+    title: 'Sr. Engineer at Twitter',
     titleTemplate: '%s | Nick Ficano',
     meta: [
       { charset: 'utf-8' },
