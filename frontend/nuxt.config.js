@@ -5,7 +5,7 @@ module.exports = {
     host: '0.0.0.0'
   },
   head: {
-    title: 'Sr. Engineer at Twitter',
+    title: 'Engineer at Twitter',
     titleTemplate: '%s | Nick Ficano',
     meta: [
       { charset: 'utf-8' },
@@ -14,7 +14,7 @@ module.exports = {
         hid: 'description',
         name: 'description',
         content:
-          'A creative and candid NYC software engineer focused on creating efficiencies and instilling a culture of humor and collaboration. First hire at two startups.'
+          'A creative software engineer focused on creating efficiencies and instilling a culture of humor and collaboration. First hire at two startups.'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]

@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 ansible = "*"
+cryptography = "*"
 
 [dev-packages]
 ipython = "*"

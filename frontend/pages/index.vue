@@ -4,7 +4,6 @@
       <hero-section />
       <about-section />
       <project-section />
-      <blog-section />
       <contact-section />
     </div>
   </div>
@@ -12,14 +11,12 @@
 
 <script>
 import AboutSection from '~/components/homepage/sections/AboutSection.vue'
-import BlogSection from '~/components/homepage/sections/BlogSection.vue'
 import ContactSection from '~/components/homepage/sections/ContactSection.vue'
 import HeroSection from '~/components/homepage/sections/HeroSection.vue'
 import ProjectSection from '~/components/homepage/sections/ProjectSection.vue'
 export default {
   components: {
     AboutSection,
-    BlogSection,
     ContactSection,
     HeroSection,
     ProjectSection
@@ -28,7 +25,7 @@ export default {
     return {
       options: {
         menu: '#menu',
-        anchors: ['hero', 'about', 'projects', 'blog', 'contact', 'pgp'],
+        anchors: ['hero', 'about', 'projects', 'contact', 'pgp'],
         sectionSelector: '.fp-section',
         verticalCentered: false,
         css3: true,
