@@ -14,10 +14,18 @@
   tags:
     - jump
 
-- name: Write NGINX vhosts
+- name: Write http NGINX vhosts
   template:
     src: templates/vhosts.conf
-    dest: /etc/nginx/conf.d/com.nickficano.nginx.conf
+    dest: /etc/nginx/conf.d/com.nickficano.ssl-nginx.conf
+  become: yes
+  notify:
+    - reload nginx
+
+- name: Write https NGINX vhosts
+  template:
+    src: templates/no-ssl-vhosts.conf
+    dest: /etc/nginx/conf.d/com.nickficano.no-ssl-nginx.conf
   become: yes
   notify:
     - reload nginx
