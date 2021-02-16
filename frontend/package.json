@@ -24,7 +24,7 @@
     "dayjs": "^1.8.14",
     "express": "^4.16.4",
     "frontmatter-markdown-loader": "^1.8.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "nuxt": "^2.0.0",
     "nuxt-fullpage.js": "^0.0.3",
     "prismjs": "^1.17.1",
