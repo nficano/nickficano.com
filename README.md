@@ -1,5 +1,4 @@
 <p align="center">
-  <img src="https://assets.nickficano.com/gh-nickficano.com-octopus.svg" alt="Nick Ficano logo" width="300" height="225">
   <div align="center">
     <img src="https://img.shields.io/badge/python-3.6-blue.svg" />
     <img src="https://img.shields.io/badge/lighthouse-100%25-brightgreen.svg" />
