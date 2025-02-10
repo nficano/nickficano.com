@@ -1,31 +1,75 @@
-<p align="center">
-  <div align="center">
-    <img src="https://img.shields.io/badge/python-3.6-blue.svg" />
-    <img src="https://img.shields.io/badge/lighthouse-100%25-brightgreen.svg" />
-    <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" />
-  </div>
-</p>
+# Nuxt Minimal Starter
 
-My website running live now at [nickficano.com](https://nickficano.com). This
-project is semi-organized, and I do occasionally refactor it, but it can
-probably use some clean-up since I learned a lot about client-side development
-since I originally wrote it (admittedly the way I incorporate jinja with the
-client is ugly and unnecessary). The point being is this is a great project to
-reference but using it as a boilerplate is ill-advised.
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-It's also worth noting that I deploy to my website directly from here, there is
-no secret or untracked files required to release this (of course authentication
-is handled through ssh keys, but that all happens transparently). You can grok
-through my entire source code with confidence that it will never reference some
-excluded file.
+## Setup
 
-## Features
-* 100% Lighthouse Score
-* Python 3.6/Flask Backend
-* Progressive Web App (PWA)
-* Auto renewing SSL certificates via Let's Encrypt
-* Hardened NGINX configuration
+Make sure to install dependencies:
 
-## Installing as a Progressive Web App (PWA) on iOS
+```bash
+# npm
+npm install
 
-<img src="https://assets.nickficano.com/gh-nickficano.com-progressive-web-app-pwa.gif" width="296" alt="Installing as a Progressive Web App (PWA) on iOS" />
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
+```
+
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
