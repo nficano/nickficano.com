@@ -7,14 +7,15 @@
       loop
       muted
       playsinline
-      class="absolute inset-0 w-full h-full object-cover opacity-50 md:hidden"
+      class="absolute inset-0 w-full h-full object-cover opacity-30 md:hidden"
     >
       <source
         src="https://s3.us-east-1.amazonaws.com/assets.nickficano.com/blepharisma-musculus.webm"
         type="video/webm"
       />
     </video>
-    <TextHover v-if="!isMobile" text="Hello" />
+    <div class="absolute inset-0 bg-black/20 backdrop-blur-sm md:hidden"></div>
+    <TextHover text="Hello" />
     <MacDock />
   </div>
 </template>

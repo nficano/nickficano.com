@@ -13,6 +13,8 @@
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@heroicons/vue": "^2.2.0",
     "@nuxt/icon": "1.11.0",
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/vue-splide": "^0.6.12",
     "@tabler/icons-vue": "^3.31.0",
     "@tailwindcss/vite": "^4.0.5",
     "@vueuse/motion": "^3.0.3",
