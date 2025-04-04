@@ -1,15 +1,31 @@
 <template>
   <div
-    class="min-h-screen flex flex-col justify-center items-center overflow-hidden"
+    class="min-h-screen flex flex-col justify-center items-center overflow-hidden relative"
   >
-    <TextHover text="Hello" />
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover opacity-50 md:hidden"
+    >
+      <source
+        src="https://s3.us-east-1.amazonaws.com/assets.nickficano.com/blepharisma-musculus.webm"
+        type="video/webm"
+      />
+    </video>
+    <TextHover v-if="!isMobile" text="Hello" />
     <MacDock />
   </div>
 </template>
 
 <script setup>
+import { useBreakpoints, breakpointsTailwind } from "@vueuse/core";
 import MacDock from "~/components/MacDock.vue";
 import TextHover from "~/components/TextHover.vue";
+
+const breakpoints = useBreakpoints(breakpointsTailwind);
+const isMobile = breakpoints.smaller("md");
 </script>
 
 <style>
