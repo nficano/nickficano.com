@@ -13,11 +13,17 @@ import {
   breakpointsTailwind,
   useScrollLock,
 } from "@vueuse/core";
+import { onMounted } from "vue";
 
 const breakpoints = useBreakpoints(breakpointsTailwind);
 const isMobile = breakpoints.smaller("md");
 
-// Lock scrolling on the body element
-const isLocked = useScrollLock(document.body);
-isLocked.value = true; // Lock scrolling by default
+// Initialize scroll lock as null
+let isLocked = ref(null);
+
+onMounted(() => {
+  // Only initialize scroll lock on client side
+  isLocked = useScrollLock(document.body);
+  isLocked.value = true; // Lock scrolling by default
+});
 </script>
