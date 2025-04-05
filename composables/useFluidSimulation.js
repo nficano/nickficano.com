@@ -3,7 +3,7 @@ import { getWebGLContext } from "~/utils/webgl";
 import { initFramebuffers } from "~/utils/framebuffers";
 import { createPrograms } from "~/public/shaders/programs";
 import { step, render } from "~/utils/simulation";
-import { updateColors, applyInputs } from "~/utils/state";
+import { updateColors, applyInputs, initSimulationState } from "~/utils/state";
 
 let gl = null;
 let ext = null;
@@ -72,7 +72,31 @@ export function useFluidSimulation() {
     } = programs);
 
     // Initialize framebuffers
-    initFramebuffers();
+    const framebuffers = initFramebuffers();
+
+    // Initialize simulation state
+    initSimulationState({
+      gl,
+      ext,
+      blit,
+      ...programs,
+      ...framebuffers,
+      SIM_RESOLUTION: 128,
+      DYE_RESOLUTION: 512,
+      DENSITY_DISSIPATION: 0.98,
+      VELOCITY_DISSIPATION: 0.98,
+      PRESSURE: 0.8,
+      PRESSURE_ITERATIONS: 20,
+      CURL: 30,
+      SPLAT_RADIUS: 0.5,
+      SPLAT_FORCE: 6000,
+      SHADING: true,
+      COLOR_UPDATE_SPEED: 0.5,
+      BACK_COLOR: { r: 0, g: 0, b: 0 },
+      TRANSPARENT: false,
+      pointers: [],
+      lastUpdateTime: Date.now(),
+    });
   }
 
   function cleanupSimulation() {

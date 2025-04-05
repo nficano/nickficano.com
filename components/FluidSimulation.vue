@@ -11,11 +11,8 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-import { useFluidSimulation } from "../composables/useFluidSimulation";
-import {
-  setupEventListeners,
-  removeEventListeners,
-} from "../utils/eventHandlers";
+import { useFluidSimulation } from "~~/composables/useFluidSimulation";
+const { fluid } = useNuxtApp();
 
 const canvas = ref(null);
 const { initSimulation, cleanupSimulation, animate } = useFluidSimulation();
@@ -37,14 +34,13 @@ onMounted(() => {
   initSimulation(canvas.value);
 
   // Setup event listeners
-  setupEventListeners(canvas.value);
+  fluid.setupEventListeners(canvas.value);
 
   // Start animation loop
   animate();
 });
 
 onUnmounted(() => {
-  cleanupSimulation();
-  removeEventListeners();
+  fluid.removeEventListeners();
 });
 </script>

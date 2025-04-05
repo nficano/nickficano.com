@@ -1,4 +1,4 @@
-import { getSimulationState } from "../simulation";
+import { getSimulationState } from "~/utils/state";
 
 export function initFramebuffers() {
   const state = getSimulationState();

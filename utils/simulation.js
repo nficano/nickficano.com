@@ -1,5 +1,3 @@
-import { getSimulationState } from "../simulation";
-
 export function step(dt) {
   const state = getSimulationState();
   const {

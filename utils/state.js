@@ -1,10 +1,24 @@
-import { getSimulationState } from "../simulation";
-import { generateColor } from "./colors";
-import { wrap } from "./colors";
+import { generateColor } from "~/utils/colors";
+import { wrap } from "~/utils/colors";
+
+let simulationState = null;
+
+export function initSimulationState(state) {
+  simulationState = state;
+}
+
+export function getSimulationState() {
+  if (!simulationState) {
+    throw new Error("Simulation state not initialized");
+  }
+  return simulationState;
+}
+
+let colorUpdateTimer = 0;
 
 export function updateColors(dt) {
   const state = getSimulationState();
-  const { COLOR_UPDATE_SPEED } = state;
+  const { COLOR_UPDATE_SPEED, pointers } = state;
 
   colorUpdateTimer += dt * COLOR_UPDATE_SPEED;
   if (colorUpdateTimer >= 1) {
@@ -29,7 +43,7 @@ export function applyInputs() {
 
 export function calcDeltaTime() {
   const state = getSimulationState();
-  const { lastUpdateTime } = state;
+  let { lastUpdateTime } = state;
 
   let now = Date.now();
   let dt = (now - lastUpdateTime) / 1000;
