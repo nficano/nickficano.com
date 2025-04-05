@@ -1,10 +1,13 @@
 <template>
-  <div class="fixed top-0 left-0 w-screen h-screen bg-black" v-bind="$attrs">
+  <div
+    class="fixed top-0 left-0 w-screen h-screen bg-black overflow-hidden"
+    v-bind="$attrs"
+  >
     <MacDock />
     <canvas
       ref="canvas"
       id="fluid"
-      class="absolute top-0 left-0 w-full h-full"
+      class="absolute top-0 left-0 w-screen h-screen overflow-hidden"
       style="z-index: 1"
     />
   </div>
