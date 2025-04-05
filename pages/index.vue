@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="h-screen overflow-hidden overflow-y-hidden p-0 m-0">
     <client-only>
       <Desktop v-if="!isMobile" />
       <Mobile v-else />
