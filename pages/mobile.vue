@@ -6,14 +6,11 @@
       class="absolute top-0 left-0 w-full h-full"
       style="z-index: 1"
     />
-    <div class="absolute top-4 left-4 text-white z-10">
-      Fluid Simulation - Frame: {{ frameCount }}
-    </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { useNuxtApp } from "#app";
 
 const canvas = ref(null);
 const frameCount = ref(0);
@@ -35,22 +32,6 @@ let copyProgram,
 let curlProgram, vorticityProgram, pressureProgram, gradienSubtractProgram;
 let displayMaterial;
 
-// Pointers array
-const pointers = [
-  {
-    id: -1,
-    texcoordX: 0,
-    texcoordY: 0,
-    prevTexcoordX: 0,
-    prevTexcoordY: 0,
-    deltaX: 0,
-    deltaY: 0,
-    down: false,
-    moved: false,
-    color: [0, 0, 0],
-  },
-];
-
 // Simulation parameters
 const SIM_RESOLUTION = 128;
 const DYE_RESOLUTION = 1440;
@@ -68,6 +49,8 @@ const TRANSPARENT = true;
 
 // Add blit variable declaration at the top level
 let blit = null;
+
+const { $fluid } = useNuxtApp();
 
 function getWebGLContext(canvas) {
   console.log("Attempting to get WebGL context...");
@@ -392,7 +375,7 @@ function updateColors(dt) {
   colorUpdateTimer += dt * COLOR_UPDATE_SPEED;
   if (colorUpdateTimer >= 1) {
     colorUpdateTimer = wrap(colorUpdateTimer, 0, 1);
-    pointers.forEach((p) => {
+    $fluid.pointers.forEach((p) => {
       p.color = generateColor();
     });
   }
@@ -462,41 +445,6 @@ function calcDeltaTime() {
   return dt;
 }
 
-function updatePointerDownData(pointer, id, posX, posY) {
-  pointer.id = id;
-  pointer.down = true;
-  pointer.moved = false;
-  pointer.texcoordX = posX / canvas.value.width;
-  pointer.texcoordY = 1.0 - posY / canvas.value.height;
-  pointer.prevTexcoordX = pointer.texcoordX;
-  pointer.prevTexcoordY = pointer.texcoordY;
-  pointer.deltaX = 0;
-  pointer.deltaY = 0;
-  pointer.color = generateColor();
-}
-
-function updatePointerMoveData(pointer, posX, posY) {
-  pointer.prevTexcoordX = pointer.texcoordX;
-  pointer.prevTexcoordY = pointer.texcoordY;
-  pointer.texcoordX = posX / canvas.value.width;
-  pointer.texcoordY = 1.0 - posY / canvas.value.height;
-  pointer.deltaX = correctDeltaX(pointer.texcoordX - pointer.prevTexcoordX);
-  pointer.deltaY = correctDeltaY(pointer.texcoordY - pointer.prevTexcoordY);
-  pointer.moved = Math.abs(pointer.deltaX) > 0 || Math.abs(pointer.deltaY) > 0;
-}
-
-function correctDeltaX(delta) {
-  let aspectRatio = canvas.value.width / canvas.value.height;
-  if (aspectRatio < 1) delta *= aspectRatio;
-  return delta;
-}
-
-function correctDeltaY(delta) {
-  let aspectRatio = canvas.value.width / canvas.value.height;
-  if (aspectRatio > 1) delta /= aspectRatio;
-  return delta;
-}
-
 function splatPointer(pointer) {
   let dx = pointer.deltaX * SPLAT_FORCE;
   let dy = pointer.deltaY * SPLAT_FORCE;
@@ -532,7 +480,7 @@ function correctRadius(radius) {
 }
 
 function applyInputs() {
-  pointers.forEach((p) => {
+  $fluid.pointers.forEach((p) => {
     if (p.moved) {
       p.moved = false;
       splatPointer(p);
@@ -874,6 +822,9 @@ onMounted(() => {
     console.error("Canvas reference is null");
     return;
   }
+
+  // Reset pointers before setup
+  $fluid.resetPointers();
 
   // Set canvas size
   const dpr = window.devicePixelRatio || 1;
@@ -1302,59 +1253,16 @@ onMounted(() => {
   animate();
 
   // Add event listeners
-  window.addEventListener("mousedown", (e) => {
-    let pointer = pointers[0];
-    let posX = scaleByPixelRatio(e.clientX);
-    let posY = scaleByPixelRatio(e.clientY);
-    updatePointerDownData(pointer, -1, posX, posY);
-  });
-
-  window.addEventListener("mousemove", (e) => {
-    let pointer = pointers[0];
-    let posX = scaleByPixelRatio(e.clientX);
-    let posY = scaleByPixelRatio(e.clientY);
-    updatePointerMoveData(pointer, posX, posY);
-  });
-
-  window.addEventListener("mouseup", () => {
-    let pointer = pointers[0];
-    pointer.down = false;
-  });
-
-  window.addEventListener("touchstart", (e) => {
-    const touches = e.targetTouches;
-    let pointer = pointers[0];
-    for (let i = 0; i < touches.length; i++) {
-      let posX = scaleByPixelRatio(touches[i].clientX);
-      let posY = scaleByPixelRatio(touches[i].clientY);
-      updatePointerDownData(pointer, touches[i].identifier, posX, posY);
-    }
-  });
-
-  window.addEventListener("touchmove", (e) => {
-    const touches = e.targetTouches;
-    let pointer = pointers[0];
-    for (let i = 0; i < touches.length; i++) {
-      let posX = scaleByPixelRatio(touches[i].clientX);
-      let posY = scaleByPixelRatio(touches[i].clientY);
-      updatePointerMoveData(pointer, posX, posY);
-    }
-  });
-
-  window.addEventListener("touchend", (e) => {
-    const touches = e.changedTouches;
-    let pointer = pointers[0];
-    for (let i = 0; i < touches.length; i++) {
-      pointer.down = false;
-    }
-  });
+  $fluid.setupEventListeners(canvas.value);
 });
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   console.log("Component unmounting");
   if (animationFrameId) {
     cancelAnimationFrame(animationFrameId);
     console.log("Animation frame cancelled");
   }
+  $fluid.removeEventListeners();
+  $fluid.resetPointers();
 });
 </script>
