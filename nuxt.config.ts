@@ -45,6 +45,12 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      meta: [
+        {
+          name: "description",
+          content: "Time is a flat circle",
+        },
+      ],
       link: [
         {
           rel: "stylesheet",
