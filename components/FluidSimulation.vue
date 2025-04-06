@@ -10,12 +10,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
-import { useFluidSimulation } from "~~/composables/useFluidSimulation";
 const { fluid } = useNuxtApp();
 
 const canvas = ref(null);
-const { initSimulation, cleanupSimulation, animate } = useFluidSimulation();
 
 onMounted(() => {
   if (!canvas.value) {
