@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="583px" height="574px" viewBox="0 0 583 574" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>burger-cheese-sharp-duotone-solid.svg</title>
+    <defs>
+        <linearGradient x1="2.59365969%" y1="56.6885826%" x2="88.8665057%" y2="47.0064917%" id="linearGradient-1">
+            <stop stop-color="#FD4948" offset="0%"></stop>
+            <stop stop-color="#FF8F53" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="2.59365969%" y1="51.6721457%" x2="88.8665057%" y2="49.2516229%" id="linearGradient-2">
+            <stop stop-color="#FD4948" offset="0%"></stop>
+            <stop stop-color="#FF8F53" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="burger-cheese-sharp-duotone-solid.svg" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(0, 14)" fill-rule="nonzero">
+            <path d="M291.5,0 C564,0 564,195 564,195 L564,234 L19,234 L19,195 C19,195 19,0 291.5,0 Z M135.785714,97.5 C125.035886,97.5 116.321429,106.230447 116.321429,117 C116.321429,127.769553 125.035886,136.5 135.785714,136.5 C146.535542,136.5 155.25,127.769553 155.25,117 C155.25,106.230447 146.535542,97.5 135.785714,97.5 Z M447.214286,97.5 C436.464458,97.5 427.75,106.230447 427.75,117 C427.75,127.769553 436.464458,136.5 447.214286,136.5 C457.964114,136.5 466.678571,127.769553 466.678571,117 C466.678571,106.230447 457.964114,97.5 447.214286,97.5 Z M291.5,58.5 C280.750172,58.5 272.035714,67.2304474 272.035714,78 C272.035714,88.7695526 280.750172,97.5 291.5,97.5 C302.249828,97.5 310.964286,88.7695526 310.964286,78 C310.964286,67.2304474 302.249828,58.5 291.5,58.5 Z" id="Combined-Shape" fill="url(#linearGradient-1)"></path>
+            <polygon id="Path" fill="url(#linearGradient-2)" points="19 428 564 428 564 545 19 545"></polygon>
+            <path d="M253,272 C331,272 409,272 487,272 C448,297.959375 409,324.040625 370,350 C331,324.040625 292,297.959375 253,272 Z" id="Path" fill="#FFC301"></path>
+            <path d="M369.866667,350 L253.066667,272 L214.133333,272 C214.133333,272 214.133333,272 214.133333,272 L0,272 L0,389 L584,389 L584,272 L525.6,272 C525.6,272 525.6,272 525.6,272 L486.666667,272 L369.866667,350 Z" id="Path" fill="#49005F"></path>
+        </g>
+    </g>
+</svg>
