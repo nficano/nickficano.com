@@ -7,6 +7,9 @@ import {
   faDisplay,
   faTrash,
   faCalendarCirclePlus,
+  faEnvelope,
+  faCalendarCheck,
+  faCalendarCircleUser,
 } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -22,6 +25,9 @@ const icons = [
   faDisplay,
   faTrash,
   faCalendarCirclePlus,
+  faEnvelope,
+  faCalendarCheck,
+  faCalendarCircleUser,
 ];
 
 // Register icons with the library

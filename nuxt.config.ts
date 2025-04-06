@@ -17,6 +17,32 @@ export default defineNuxtConfig({
     ],
   },
   modules: ["nuxt-svgo", "@vueuse/motion/nuxt"],
+  runtimeConfig: {
+    public: {
+      dockItems: [
+        {
+          icon: ["fab", "github"],
+          link: "https://github.com/nficano",
+          target: "_blank",
+        },
+        {
+          icon: ["fab", "linkedin"],
+          link: "https://linkedin.com/in/nficano",
+          target: "_blank",
+        },
+        {
+          icon: ["fal", "envelope"],
+          link: "mailto:nficano@gmail.com",
+          target: "_blank",
+        },
+        {
+          icon: ["fal", "calendar-circle-user"],
+          link: "https://fantastical.app/nficano/15m",
+          target: "_blank",
+        },
+      ],
+    },
+  },
   app: {
     head: {
       link: [

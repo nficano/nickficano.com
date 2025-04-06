@@ -46,15 +46,22 @@
           @mouseleave="handleMouseLeave"
         >
           <div class="icon-wrapper">
-            <div class="icon-base">
-              <FontAwesomeIcon :icon="['fab', item.icon]" class="icon" />
-            </div>
-            <div
-              class="icon-gradient"
-              :style="{ opacity: hoveredIndex === index ? 1 : 0 }"
+            <a
+              :href="item.link"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="icon-link"
             >
-              <FontAwesomeIcon :icon="['fab', item.icon]" class="icon" />
-            </div>
+              <div class="icon-base">
+                <FontAwesomeIcon :icon="item.icon" class="icon" />
+              </div>
+              <div
+                class="icon-gradient"
+                :style="{ opacity: hoveredIndex === index ? 1 : 0 }"
+              >
+                <FontAwesomeIcon :icon="item.icon" class="icon" />
+              </div>
+            </a>
           </div>
         </div>
       </div>
@@ -62,7 +69,7 @@
       <div v-else class="mobile-dock">
         <div v-for="(item, index) in dockItems" :key="index" class="dock-item">
           <div class="icon-wrapper">
-            <FontAwesomeIcon :icon="['fab', item.icon]" class="icon" />
+            <FontAwesomeIcon :icon="item.icon" class="icon" />
           </div>
         </div>
       </div>
@@ -76,6 +83,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { useBreakpoints, breakpointsTailwind } from "@vueuse/core";
+import { useRuntimeConfig } from "nuxt/app";
 
 library.add(fab);
 
@@ -86,12 +94,8 @@ const dockRef = ref(null);
 const hoveredIndex = ref(null);
 const maskPosition = ref({ cx: "50%", cy: "50%" });
 
-const dockItems = [
-  { icon: "github" },
-  { icon: "twitter" },
-  { icon: "linkedin" },
-  { icon: "instagram" },
-];
+const config = useRuntimeConfig();
+const dockItems = config.public.dockItems;
 
 const calculateScale = (distance) => {
   return 1 + 0.2 * (1 - distance / 6);
@@ -431,5 +435,15 @@ onMounted(() => {
     height: 32px;
     color: rgba(255, 255, 255, 0.9);
   }
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 </style>
