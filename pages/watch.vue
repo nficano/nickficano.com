@@ -1,75 +1,193 @@
 <template>
-  <div class="relative min-h-screen overflow-hidden bg-zinc-950 text-zinc-100">
-    <div class="pointer-events-none absolute inset-0 overflow-hidden">
-      <div
-        class="absolute left-[-35%] top-[-45%] h-[170%] w-[170%] -rotate-12 bg-[radial-gradient(ellipse_at_center,rgba(96,165,250,0.35)_0%,rgba(59,130,246,0.22)_22%,rgba(37,99,235,0.1)_45%,transparent_70%)] blur-3xl mix-blend-screen md:left-[-20%] md:top-[-35%] md:h-[150%] md:w-[150%]"
-      ></div>
-      <div
-        class="absolute left-[62%] top-[46%] h-[135%] w-[155%] -translate-x-1/2 -translate-y-1/2 rotate-8 bg-[radial-gradient(ellipse_at_center,rgba(6,10,25,0.1)_0%,rgba(6,10,25,0.45)_30%,rgba(2,6,23,0.84)_65%,rgba(2,6,23,0.98)_86%,rgba(2,6,23,1)_96%)] mix-blend-multiply blur-[140px] sm:left-[60%] sm:top-[42%] md:h-[145%] md:w-[165%]"
-      ></div>
-      <div
-        class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(236,72,153,0.25),transparent_60%)] mix-blend-screen"
-      ></div>
-      <div
-        class="absolute inset-0 bg-[linear-gradient(136deg,rgba(15,23,42,0.84),rgba(2,6,23,0.95)_58%,rgba(2,6,23,1)_88%)]"
-      ></div>
-    </div>
+  <div :class="['relative', 'min-h-screen', 'bg-zinc-950', 'text-zinc-100']">
     <div
-      class="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 py-12 sm:px-8 xl:max-w-7xl 2xl:max-w-[1600px] 2xl:px-12 2xl:py-16"
+      :class="[
+        'relative',
+        'mx-auto',
+        'flex',
+        'min-h-screen',
+        'w-full',
+        'max-w-5xl',
+        'flex-col',
+        'items-start',
+        'px-4',
+        'py-6',
+        'sm:px-6',
+        'md:px-8',
+        'lg:max-w-6xl',
+        'xl:max-w-7xl',
+        '2xl:max-w-[1600px]',
+      ]"
     >
-      <div
-        class="relative -mt-16 flex flex-1 items-center justify-center sm:-mt-28 lg:-mt-52"
-      >
+      <div :class="['flex', 'w-full', 'flex-col']">
         <div
           v-if="!videoId"
-          class="relative w-full max-w-lg overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] px-10 py-14 text-center shadow-2xl backdrop-blur"
+          :class="[
+            'w-full',
+            'border',
+            'border-zinc-800',
+            'bg-zinc-950',
+            'px-6',
+            'py-16',
+            'text-center',
+            'sm:px-12',
+            'sm:py-20',
+          ]"
         >
-          <div
-            class="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/15 via-transparent to-transparent"
-          ></div>
-          <p class="text-lg font-semibold text-rose-300">
-            Missing video identifier.
+          <p :class="['text-base', 'font-semibold', 'text-zinc-100', 'sm:text-lg']">
+            Missing video identifier
           </p>
-          <p class="mt-3 text-sm leading-relaxed text-zinc-400">
-            Append
-            <span class="font-mono text-rose-200/90">?v=&lt;nanoid&gt;</span>
-            to the URL — for example
-            <span class="font-mono text-rose-200/90"
-              >watch.nickficano.com?v=BWQ4fZyi</span
-            >.
+          <p :class="['mt-3', 'text-sm', 'text-zinc-400']">
+            Add <span :class="['font-mono', 'text-zinc-100']">?v=&lt;nanoid&gt;</span> to the URL
           </p>
         </div>
 
         <ClientOnly v-else>
-          <div class="relative w-full">
+          <div :class="['w-full', 'flex', 'flex-col', 'gap-4']">
             <div
-              class="pointer-events-none absolute left-[47%] top-[65%] h-[160%] w-[185%] -translate-x-1/2 -translate-y-1/2 rotate-[6deg] bg-[radial-gradient(ellipse_at_center,rgba(1,4,12,0.72)_18%,rgba(1,4,12,0.65)_32%,rgba(2,6,23,0.4)_56%,rgba(2,6,23,0.1)_78%,transparent_88%)] mix-blend-multiply blur-[120px] sm:top-[60%] md:h-[170%] md:w-[210%] md:rotate-[4deg]"
-            ></div>
-            <div
-              class="pointer-events-none absolute left-[18%] top-[-26%] h-[165%] w-[180%] -translate-y-1/2 -rotate-[10deg] bg-[conic-gradient(from_230deg_at_22%_32%,rgba(125,211,252,0.28)_0deg,rgba(96,165,250,0.16)_48deg,rgba(59,130,246,0.08)_120deg,transparent_210deg)] mix-blend-screen blur-[120px] sm:left-[12%] sm:top-[-20%] md:h-[150%] md:w-[170%]"
-            ></div>
-            <div
-              class="relative w-full overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_35px_120px_-35px_rgba(15,23,42,0.9)] backdrop-blur-lg sm:p-8 2xl:rounded-[36px] 2xl:border-white/20 2xl:p-12 2xl:shadow-[0_55px_160px_-45px_rgba(15,23,42,0.95)]"
+              :class="[
+                'border',
+                'border-zinc-800',
+                'bg-zinc-950',
+                'p-4',
+                'sm:p-5',
+                'md:p-6',
+              ]"
             >
               <div
-                class="group relative aspect-video w-full overflow-hidden rounded-3xl border border-white/10 bg-black/60 2xl:rounded-[40px]"
+                :class="[
+                  'flex',
+                  'flex-col',
+                  'items-start',
+                  'gap-3',
+                  'sm:flex-row',
+                  'sm:items-center',
+                  'sm:justify-between',
+                  'sm:gap-4',
+                ]"
               >
-                <div
-                  class="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-tr from-sky-500/20 via-transparent to-purple-500/20 opacity-70 transition duration-700 group-hover:opacity-90 2xl:rounded-[40px]"
-                ></div>
+                <p :class="['hidden', 'text-xs', 'text-zinc-500', 'uppercase', 'tracking-wider', 'sm:block', 'sm:text-sm']">
+                  Unlisted • Expires in 7 days
+                </p>
+                <div :class="['flex', 'items-center', 'gap-2', 'w-full', 'flex-wrap', 'sm:w-auto', 'sm:gap-2']">
+                  <button
+                    @click="copyToClipboard"
+                    :class="[
+                      'flex',
+                      'flex-1',
+                      'items-center',
+                      'justify-center',
+                      'gap-1.5',
+                      'border',
+                      'px-3',
+                      'py-2',
+                      'text-xs',
+                      'font-medium',
+                      'transition',
+                      'sm:flex-initial',
+                      'sm:px-4',
+                      'sm:py-2.5',
+                      copySuccess
+                        ? 'bg-white text-black border-white'
+                        : 'border-zinc-100 bg-zinc-950 text-zinc-100 hover:bg-white hover:text-black',
+                    ]"
+                    :title="copySuccess ? 'URL copied!' : 'Copy URL to clipboard'"
+                  >
+                    <FontAwesomeIcon :icon="['fal', 'copy']" :class="['w-3.5', 'h-3.5', 'sm:w-4', 'sm:h-4']" />
+                    <span>{{ copySuccess ? 'Copied!' : 'Copy URL' }}</span>
+                  </button>
+                  <a
+                    v-if="sources.length > 0"
+                    :href="sources[0].src"
+                    download
+                    :class="[
+                      'flex',
+                      'flex-1',
+                      'items-center',
+                      'justify-center',
+                      'gap-1.5',
+                      'border',
+                      'border-zinc-900',
+                      'dark:border-zinc-100',
+                      'bg-white',
+                      'dark:bg-zinc-950',
+                      'px-3',
+                      'py-2',
+                      'text-xs',
+                      'font-medium',
+                      'text-zinc-900',
+                      'dark:text-zinc-100',
+                      'transition',
+                      'hover:bg-black',
+                      'hover:text-white',
+                      'dark:hover:bg-white',
+                      'dark:hover:text-black',
+                      'sm:flex-initial',
+                      'sm:px-4',
+                      'sm:py-2.5',
+                    ]"
+                    title="Download video file"
+                  >
+                    <FontAwesomeIcon :icon="['fal', 'download']" :class="['w-3.5', 'h-3.5', 'sm:w-4', 'sm:h-4']" />
+                    <span>Download</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              :class="[
+                'relative',
+                'z-10',
+                'w-full',
+                'border',
+                'border-zinc-800',
+                'bg-zinc-950',
+                'p-2',
+                'sm:p-3',
+                'md:p-4',
+              ]"
+            >
+              <div
+                :class="[
+                  'aspect-video',
+                  'w-full',
+                  'overflow-hidden',
+                  'border',
+                  'border-zinc-700',
+                  'bg-black',
+                ]"
+              >
                 <video
                   id="videoPlayer"
-                  class="plyr relative z-10 h-full w-full rounded-3xl 2xl:rounded-[40px]"
+                  :class="[
+                    'plyr',
+                    'h-full',
+                    'w-full',
+                  ]"
                   playsinline
                   controls
                   muted
                 ></video>
                 <div
                   v-if="!isPlayerReady"
-                  class="absolute inset-0 z-20 flex items-center justify-center bg-black/70"
+                  :class="[
+                    'absolute',
+                    'inset-0',
+                    'z-20',
+                    'flex',
+                    'items-center',
+                    'justify-center',
+                    'bg-black/70',
+                  ]"
                 >
                   <p
-                    class="text-sm font-medium uppercase tracking-[0.3em] text-zinc-300"
+                    :class="[
+                      'text-sm',
+                      'font-medium',
+                      'uppercase',
+                      'tracking-[0.3em]',
+                      'text-zinc-100',
+                    ]"
                   >
                     Loading video…
                   </p>
@@ -87,10 +205,48 @@
 import { computed, onMounted, ref, watch } from "vue";
 import type { VideoMeta, VideoSource } from "~/composables/useVideoPlayer";
 import { useVideoPlayer } from "~/composables/useVideoPlayer";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 const route = useRoute();
 const sources = ref<VideoSource[]>([]);
 const meta = ref<VideoMeta | null>(null);
+const copySuccess = ref(false);
+
+const copyToClipboard = async () => {
+  const url = window.location.href;
+  try {
+    await navigator.clipboard.writeText(url);
+    copySuccess.value = true;
+    setTimeout(() => {
+      copySuccess.value = false;
+    }, 2000);
+  } catch (err) {
+    console.error('Failed to copy:', err);
+  }
+};
+
+// Keyboard shortcuts
+onMounted(() => {
+  const handleKeyPress = (e: KeyboardEvent) => {
+    // Ignore if typing in an input
+    if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+      return;
+    }
+
+    switch (e.key.toLowerCase()) {
+      case 'c':
+        if (e.metaKey || e.ctrlKey) return; // Don't override copy
+        copyToClipboard();
+        break;
+    }
+  };
+
+  window.addEventListener('keydown', handleKeyPress);
+
+  return () => {
+    window.removeEventListener('keydown', handleKeyPress);
+  };
+});
 
 const normalizeVideoId = (input: string) => input.trim();
 
@@ -190,3 +346,6 @@ watch(
   }
 );
 </script>
+
+<style scoped>
+</style>

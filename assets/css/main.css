@@ -25,8 +25,14 @@ body {
   display: grid;
   color: var(--fg);
   background: var(--bg);
-  padding: var(--space);
+  padding: 0;
   min-height: 100vh;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding: var(--space);
+  }
 }
 
 main {

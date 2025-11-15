@@ -4,7 +4,7 @@ import aspectRatio from "@tailwindcss/aspect-ratio";
 import lineClamp from "@tailwindcss/line-clamp";
 
 export default {
-  darkMode: "class",
+  darkMode: "media",
 
   content: {
     safelist: [],

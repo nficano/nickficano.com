@@ -10,6 +10,10 @@ import {
   faEnvelope,
   faCalendarCheck,
   faCalendarCircleUser,
+  faDownload,
+  faCopy,
+  faLightbulb,
+  faExpand,
 } from "@fortawesome/pro-light-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -28,6 +32,10 @@ const icons = [
   faEnvelope,
   faCalendarCheck,
   faCalendarCircleUser,
+  faDownload,
+  faCopy,
+  faLightbulb,
+  faExpand,
 ];
 
 // Register icons with the library
