@@ -103,3 +103,4 @@ sw.*
 
 # Mac OSX
 .DS_Store
+.output
