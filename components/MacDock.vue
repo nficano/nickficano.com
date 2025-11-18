@@ -404,7 +404,6 @@ onMounted(() => {
     width: 100%;
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
   }
 
   .mobile-dock {

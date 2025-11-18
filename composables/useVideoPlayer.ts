@@ -37,7 +37,7 @@ const createTracksList = (captions?: Record<string, string>) => {
     .filter((track) => track.src);
 };
 
-const updatePlayerSource = (
+export const updatePlayerSource = (
   videoPlayer: PlyrInstance,
   newSources: VideoSource[],
   newMeta?: VideoMeta | null
@@ -96,7 +96,6 @@ export function useVideoPlayer(
     const { default: PlyrConstructor } = await import("plyr");
 
     const videoPlayer = new PlyrConstructor("#videoPlayer", {
-      ratio: "16:9",
       captions: {
         active: true,
         update: true,

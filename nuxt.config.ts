@@ -1,13 +1,50 @@
 import tailwindcss from "@tailwindcss/vite";
+import type { PluginOption } from "vite";
+import { fileURLToPath } from "node:url";
+import { dirname, resolve } from "node:path";
+
+const appManifestFallbackPlugin = (): PluginOption => {
+  const virtualId = "\0watch-app-manifest";
+
+  return {
+    name: "watch-app-manifest-fallback",
+    apply: "serve",
+    resolveId(id) {
+      if (id === "#app-manifest") {
+        return virtualId;
+      }
+    },
+    load(id) {
+      if (id === virtualId) {
+        return "export default {}";
+      }
+    },
+  };
+};
+
+const manifestFallbackPath = resolve(
+  dirname(fileURLToPath(import.meta.url)),
+  "utils/app-manifest-fallback.ts"
+);
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
   svgo: {
     autoImportPath: "./assets/images/",
+    componentPrefix: "watch",
+    defaultImport: "component",
   },
   css: ["~/assets/css/main.css"],
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [appManifestFallbackPlugin(), tailwindcss()],
+    resolve: {
+      alias:
+        process.env.NODE_ENV === "development"
+          ? {
+              "#app-manifest": manifestFallbackPath,
+            }
+          : {},
+    },
   },
   build: {
     transpile: [
