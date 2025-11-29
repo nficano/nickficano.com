@@ -20,6 +20,7 @@
     "@vueuse/motion": "^3.0.3",
     "nuxt": "^3.15.4",
     "nuxt-svgo": "4.0.14",
+    "otpauth": "^9.4.1",
     "plyr": "^3.8.3",
     "tailwindcss": "^4.0.5",
     "tsparticles": "2.12.0",
