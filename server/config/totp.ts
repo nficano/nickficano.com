@@ -14,7 +14,7 @@ export const totpDirectory = {
     label: "Plex",
     issuer: "Plex",
     auth: "otpauth://totp/Plex:Plex_nficano?secret=635JZ3NFLLD4HUPOIZJA32IGMXZMC6PB&issuer=Plex",
-    icon: "/icon/plex.tv.png",
+    icon: "images/icon/plex.tv.png",
     accent: "#e5a00d",
     period: 60,
   },
